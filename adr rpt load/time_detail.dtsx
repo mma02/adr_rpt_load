@@ -1,0 +1,2696 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/8/2016 1:44:35 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{DA293580-D329-4ECE-9BC2-C6B72E6E0DA1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="time_detail"
+  DTS:PackageType="5"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{278FAC68-45BE-455A-8C00-F10286B3DC4B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EADBB9EF-668A-45B4-A04C-2F5FAA9D764C}"
+      DTS:ObjectName="lvbasql1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_fact]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E75CAF8A-5DBB-444C-84CC-B2CE0A500B98}"
+      DTS:ObjectName="lvbbi-ssas01.adr_fact">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_fact;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{118FBE62-D17B-4141-9EDD-8FE15031E10E}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F7D25F2F-ED46-44B1-9A64-B3C4294DB24C}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{70CC740E-92DD-48C7-B0E0-347BED7D9FED}"
+      DTS:ObjectName="runDate"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">4/8/2016 3:54:43 PM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load aged_wip (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5A28D788-0E8D-491C-8CFE-9CE145570C64}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load aged_wip (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load aged_wip (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_wip]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged31]"
+                      cachedDataType="i4"
+                      cachedName="aged31"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged31]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged61]"
+                      cachedDataType="i4"
+                      cachedName="aged61"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged61]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged181]"
+                      cachedDataType="i4"
+                      cachedName="aged181"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged181]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged361]"
+                      cachedDataType="i4"
+                      cachedName="aged361"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged361]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged721]"
+                      cachedDataType="i4"
+                      cachedName="aged721"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged721]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged31]"
+                      dataType="i4"
+                      name="aged31" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged61]"
+                      dataType="i4"
+                      name="aged61" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged181]"
+                      dataType="i4"
+                      name="aged181" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged361]"
+                      dataType="i4"
+                      name="aged361" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged721]"
+                      dataType="i4"
+                      name="aged721" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load aged_wip (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_wip]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged31]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]"
+                      name="aged31"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged61]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]"
+                      name="aged61"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged181]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]"
+                      name="aged181"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged361]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]"
+                      name="aged361"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged721]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]"
+                      name="aged721"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_detail_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_detail_id]"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_detail_id]"
+                      name="time_detail_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged31]"
+                      dataType="i4"
+                      name="aged31" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged61]"
+                      dataType="i4"
+                      name="aged61" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged181]"
+                      dataType="i4"
+                      name="aged181" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged361]"
+                      dataType="i4"
+                      name="aged361" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged721]"
+                      dataType="i4"
+                      name="aged721" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_detail_id]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_detail_id]"
+                      name="time_detail_id" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged31]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged31]"
+                      name="aged31" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged61]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged61]"
+                      name="aged61" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged181]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged181]"
+                      name="aged181" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged361]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged361]"
+                      name="aged361" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged721]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged721]"
+                      name="aged721" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load aged_wip (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load aged_wip (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load aged_wip (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load aged_wip (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8C4177D5-EECC-457E-9FBA-459C3BD9A45B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load aged_wip (staging)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load aged_wip (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_wip]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged_wip (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged31]"
+                      cachedDataType="i4"
+                      cachedName="aged31"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged31]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged61]"
+                      cachedDataType="i4"
+                      cachedName="aged61"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged61]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged181]"
+                      cachedDataType="i4"
+                      cachedName="aged181"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged181]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged361]"
+                      cachedDataType="i4"
+                      cachedName="aged361"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged361]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]" />
+                    <inputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged721]"
+                      cachedDataType="i4"
+                      cachedName="aged721"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged721]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged31]"
+                      dataType="i4"
+                      name="aged31" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged61]"
+                      dataType="i4"
+                      name="aged61" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged181]"
+                      dataType="i4"
+                      name="aged181" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged361]"
+                      dataType="i4"
+                      name="aged361" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged721]"
+                      dataType="i4"
+                      name="aged721" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load aged_wip (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load aged_wip (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_aged_wip] '1/1/2015'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged_wip (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      name="time_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged31]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged31]"
+                      name="aged31"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged61]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged61]"
+                      name="aged61"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged181]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged181]"
+                      name="aged181"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged361]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged361]"
+                      name="aged361"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged721]"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged721]"
+                      name="aged721"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      dataType="i4"
+                      name="time_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged31]"
+                      dataType="i4"
+                      name="aged31" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged61]"
+                      dataType="i4"
+                      name="aged61" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged181]"
+                      dataType="i4"
+                      name="aged181" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged361]"
+                      dataType="i4"
+                      name="aged361" />
+                    <externalMetadataColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged721]"
+                      dataType="i4"
+                      name="aged721" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      name="time_uno" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged31]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged31]"
+                      name="aged31" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged61]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged61]"
+                      name="aged61" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged181]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged181]"
+                      name="aged181" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged361]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged361]"
+                      name="aged361" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged721]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged721]"
+                      name="aged721" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load aged_wip (staging).Paths[OLE DB Source Output]"
+              endId="Package\load aged_wip (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load aged_wip (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load time_detail (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{738613C9-25BE-4811-B525-81BBB9EF5F49}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load time_detail (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load time_detail (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[time_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load time_detail (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[time_uno]"
+                      cachedDataType="i4"
+                      cachedName="time_uno"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_uno]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bil_tran_number]"
+                      cachedDataType="i4"
+                      cachedName="bil_tran_number"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bil_tran_number]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bil_tran_number]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[worked_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="worked_date"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_date]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_date]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[worked_month]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="worked_month"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_month]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_month]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_hours]"
+                      cachedDataType="cy"
+                      cachedName="base_hours"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hours]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hours]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tobill_hrs]"
+                      cachedDataType="cy"
+                      cachedName="tobill_hrs"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[timeKeeper_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="timeKeeper_name"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_name]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_name]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[timeKeeper_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="timeKeeper_code"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_code]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_code]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[posted_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="posted_date"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_date]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_date]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[posted_month]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="posted_month"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_month]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_month]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WIP_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="WIP_status"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WIP_status]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[WIP_status]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_amt]"
+                      cachedDataType="numeric"
+                      cachedName="base_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]" />
+                    <inputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[std_amt]"
+                      cachedDataType="numeric"
+                      cachedName="std_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_uno]"
+                      dataType="i4"
+                      name="time_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bil_tran_number]"
+                      dataType="i4"
+                      name="bil_tran_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_date]"
+                      dataType="dbTimeStamp"
+                      name="worked_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_month]"
+                      dataType="dbTimeStamp"
+                      name="worked_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hours]"
+                      dataType="cy"
+                      name="base_hours" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
+                      dataType="cy"
+                      name="tobill_hrs" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="timeKeeper_name" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="timeKeeper_code" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_date]"
+                      dataType="dbTimeStamp"
+                      name="posted_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_month]"
+                      dataType="dbTimeStamp"
+                      name="posted_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WIP_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="WIP_status" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
+                      dataType="numeric"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
+                      dataType="numeric"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load time_detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load time_detail (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[time_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load time_detail (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      name="time_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bil_tran_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bil_tran_number]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bil_tran_number]"
+                      name="bil_tran_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[worked_date]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_date]"
+                      name="worked_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_month]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[worked_month]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[worked_month]"
+                      name="worked_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hours]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hours]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hours]"
+                      name="base_hours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
+                      name="tobill_hrs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timeKeeper_name]"
+                      length="40"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_name]"
+                      name="timeKeeper_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timeKeeper_code]"
+                      length="6"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[timeKeeper_code]"
+                      name="timeKeeper_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[posted_date]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_date]"
+                      name="posted_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_month]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[posted_month]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[posted_month]"
+                      name="posted_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[WIP_status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WIP_status]"
+                      length="1"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[WIP_status]"
+                      name="WIP_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
+                      name="base_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
+                      name="std_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_detail_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_detail_id]"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_detail_id]"
+                      name="time_detail_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      dataType="i4"
+                      name="time_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bil_tran_number]"
+                      dataType="i4"
+                      name="bil_tran_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[worked_date]"
+                      dataType="dbTimeStamp"
+                      name="worked_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[worked_month]"
+                      dataType="dbTimeStamp"
+                      name="worked_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hours]"
+                      dataType="cy"
+                      name="base_hours" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
+                      dataType="cy"
+                      name="tobill_hrs" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timeKeeper_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="timeKeeper_name" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[timeKeeper_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="timeKeeper_code" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[posted_date]"
+                      dataType="dbTimeStamp"
+                      name="posted_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[posted_month]"
+                      dataType="dbTimeStamp"
+                      name="posted_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WIP_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="WIP_status" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
+                      dataType="numeric"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
+                      dataType="numeric"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_detail_id]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_detail_id]"
+                      name="time_detail_id" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      name="time_uno" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bil_tran_number]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bil_tran_number]"
+                      name="bil_tran_number" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[worked_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[worked_date]"
+                      name="worked_date" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[worked_month]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[worked_month]"
+                      name="worked_month" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hours]"
+                      dataType="cy"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hours]"
+                      name="base_hours" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
+                      dataType="cy"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
+                      name="tobill_hrs" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timeKeeper_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timeKeeper_name]"
+                      name="timeKeeper_name" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timeKeeper_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[timeKeeper_code]"
+                      name="timeKeeper_code" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[posted_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[posted_date]"
+                      name="posted_date" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[posted_month]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[posted_month]"
+                      name="posted_month" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WIP_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WIP_status]"
+                      name="WIP_status" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load time_detail (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load time_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load time_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load time_detail (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BD719567-EC24-48BF-9823-414780FB9049}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load time_detail (staging)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load time_detail (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[time_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load time_detail (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[time_uno]"
+                      cachedDataType="i4"
+                      cachedName="time_uno"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_uno]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tobill_hrs]"
+                      cachedDataType="cy"
+                      cachedName="tobill_hrs"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[wip_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="wip_status"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WIP_status]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[wip_status]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_amt]"
+                      cachedDataType="numeric"
+                      cachedName="base_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[std_amt]"
+                      cachedDataType="numeric"
+                      cachedName="std_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_tran_uno"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bil_tran_number]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="tran_date"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_date]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_month]"
+                      cachedDataType="i4"
+                      cachedName="tran_month"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_month]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_month]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_hrs]"
+                      cachedDataType="cy"
+                      cachedName="base_hrs"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hours]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="employee_name"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_name]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="employee_code"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_code]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[post_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="post_date"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_date]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_date]" />
+                    <inputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[post_month]"
+                      cachedDataType="i4"
+                      cachedName="post_month"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_month]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_month]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_uno]"
+                      dataType="i4"
+                      name="time_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bil_tran_number]"
+                      dataType="i4"
+                      name="bil_tran_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_date]"
+                      dataType="dbTimeStamp"
+                      name="worked_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[worked_month]"
+                      dataType="dbTimeStamp"
+                      name="worked_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hours]"
+                      dataType="cy"
+                      name="base_hours" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
+                      dataType="cy"
+                      name="tobill_hrs" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="timeKeeper_name" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timeKeeper_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="timeKeeper_code" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_date]"
+                      dataType="dbTimeStamp"
+                      name="posted_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[posted_month]"
+                      dataType="dbTimeStamp"
+                      name="posted_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WIP_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="WIP_status" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
+                      dataType="numeric"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
+                      dataType="numeric"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time_detail_id]"
+                      dataType="i4"
+                      name="time_detail_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load time_detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load time_detail (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_time_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load time_detail (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[time_uno]"
+                      name="time_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      name="tran_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
+                      name="base_hrs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
+                      name="tobill_hrs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_name]"
+                      length="40"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]"
+                      name="employee_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_code]"
+                      length="6"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]"
+                      name="employee_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[post_date]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_date]"
+                      name="post_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[wip_status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[wip_status]"
+                      length="1"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[wip_status]"
+                      name="wip_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
+                      name="base_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
+                      name="std_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_month]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_month]"
+                      name="tran_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[post_month]"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[post_month]"
+                      name="post_month"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[time_uno]"
+                      dataType="i4"
+                      name="time_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      dataType="dbTimeStamp"
+                      name="tran_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
+                      dataType="cy"
+                      name="base_hrs" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
+                      dataType="cy"
+                      name="tobill_hrs" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="employee_name" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="employee_code" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[post_date]"
+                      dataType="dbTimeStamp"
+                      name="post_date" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[wip_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="wip_status" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
+                      dataType="numeric"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
+                      dataType="numeric"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_month]"
+                      dataType="i4"
+                      name="tran_month" />
+                    <externalMetadataColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[post_month]"
+                      dataType="i4"
+                      name="post_month" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[time_uno]"
+                      name="time_uno" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      name="tran_date" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_month]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_month]"
+                      name="tran_month" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
+                      dataType="cy"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
+                      name="base_hrs" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
+                      dataType="cy"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
+                      name="tobill_hrs" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_name]"
+                      name="employee_name" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_code]"
+                      name="employee_code" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[post_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[post_date]"
+                      name="post_date" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[post_month]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[post_month]"
+                      name="post_month" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[wip_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[wip_status]"
+                      name="wip_status" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
+                      name="base_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
+                      name="std_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load time_detail (staging).Paths[OLE DB Source Output]"
+              endId="Package\load time_detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load time_detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate aged_wip (adr rpt)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C82C505A-99B2-43FB-AB44-24D14DC0AD7A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate aged_wip (adr rpt)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{118FBE62-D17B-4141-9EDD-8FE15031E10E}"
+          SQLTask:SqlStatementSource="truncate table aged_wip" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate aged_wip (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1AEE0288-F17B-4266-A0A6-30345C8755F1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate aged_wip (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F7D25F2F-ED46-44B1-9A64-B3C4294DB24C}"
+          SQLTask:SqlStatementSource="truncate table aged_wip" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate time detail (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BB0B79E2-1DC8-405A-83A5-A016CAEF0E9E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate time detail (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F7D25F2F-ED46-44B1-9A64-B3C4294DB24C}"
+          SQLTask:SqlStatementSource="truncate table time_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD190AEE-C564-48DF-9F03-2FDB6EF1E891}"
+      DTS:From="Package\truncate aged_wip (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load aged_wip (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9C70CE6F-732D-4D8B-8C85-F04C431A61EC}"
+      DTS:From="Package\load time_detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load time_detail (adr rpt)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2691A986-2E1B-49A0-B8BB-0ABCE0ECDD1E}"
+      DTS:From="Package\truncate time detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\load time_detail (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{ABDED67E-7B45-479B-94A8-30AAD5EF203A}"
+      DTS:From="Package\load time_detail (adr rpt)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\truncate aged_wip (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{52A21D10-01CC-458B-840B-4A94433A11DF}"
+      DTS:From="Package\load aged_wip (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\truncate aged_wip (adr rpt)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{D7DD3A5C-872A-4232-9D01-38CA5AC0219B}"
+      DTS:From="Package\truncate aged_wip (adr rpt)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\load aged_wip (adr rpt)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193,42"
+          Id="Package\load aged_wip (adr rpt)"
+          TopLeft="41,448" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\load aged_wip (staging)"
+          TopLeft="42,306" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\load time_detail (adr rpt)"
+          TopLeft="41,152" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\load time_detail (staging)"
+          TopLeft="40,84" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\truncate aged_wip (adr rpt)"
+          TopLeft="29,378" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\truncate time detail (staging)"
+          TopLeft="33,10" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="140.75,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="141.5,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="137.25,348">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="136.25,420">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\truncate aged_wip (staging)"
+          TopLeft="37,229" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="142.25,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="141.75,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load aged_wip (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged_wip (adr rpt)\OLE DB Source"
+          TopLeft="63,209" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged_wip (adr rpt)\OLE DB Destination"
+          TopLeft="551,212" />
+        <EdgeLayout
+          Id="Package\load aged_wip (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="215,231.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="336,0"
+              Start="0,0"
+              End="328.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="328.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged_wip (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged_wip (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load aged_wip (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged_wip (staging)\OLE DB Source"
+          TopLeft="73,126" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged_wip (staging)\OLE DB Destination"
+          TopLeft="522,130" />
+        <EdgeLayout
+          Id="Package\load aged_wip (staging).Paths[OLE DB Source Output]"
+          TopLeft="225,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="297,0"
+              Start="0,0"
+              End="289.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="289.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged_wip (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged_wip (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load time_detail (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load time_detail (adr rpt)\OLE DB Source"
+          TopLeft="64,221" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load time_detail (adr rpt)\OLE DB Destination"
+          TopLeft="622,226" />
+        <EdgeLayout
+          Id="Package\load time_detail (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="216,244.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="406,0"
+              Start="0,0"
+              End="398.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="398.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load time_detail (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load time_detail (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load time_detail (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load time_detail (staging)\OLE DB Source"
+          TopLeft="73,116" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load time_detail (staging)\OLE DB Destination"
+          TopLeft="582,122" />
+        <EdgeLayout
+          Id="Package\load time_detail (staging).Paths[OLE DB Source Output]"
+          TopLeft="225,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="357,0"
+              Start="0,0"
+              End="349.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="349.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load time_detail (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load time_detail (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

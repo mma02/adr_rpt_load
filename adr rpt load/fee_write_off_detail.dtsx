@@ -1,0 +1,1283 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/8/2016 10:58:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{AD856622-7218-4F30-9B2A-CD661792FFDD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="fee_write_off_detail"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{C9C3C116-58BF-4A6C-AD35-57EB79904BDE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3AE95F8F-27E2-47A9-9D84-2A2F1455F0E7}"
+      DTS:ObjectName="LVBASQL1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LVBASQL1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_fact]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{753E9041-ABA1-4D6B-ACBD-188A9F31CF45}"
+      DTS:ObjectName="lvbbi-ssas01.adr_fact">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_fact;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1D35854-6693-4AC1-8984-595BB2EABA09}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DA9FF508-27C2-4686-AA4F-E41B54A2410C}"
+      DTS:ObjectName="LVBBI-SSAS01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LVBBI-SSAS01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load write offs detail (adr_rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{62D3EDD8-75B5-4243-99DA-50A9A2F25907}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load write offs detail (adr_rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load write offs detail (adr_rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fee_write_off_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_tran_uno"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="write_off_date"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_fees_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_fees_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_hard_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_hard_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_soft_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_soft_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="write_off_type"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      name="write_off_date" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
+                      dataType="numeric"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
+                      dataType="numeric"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
+                      dataType="numeric"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="write_off_type" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fee_write_off_id]"
+                      dataType="i4"
+                      name="fee_write_off_id" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_tran_uno]"
+                      dataType="i4"
+                      name="write_off_tran_uno" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load write offs detail (adr_rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fee_write_off_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]"
+                      name="write_off_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_type]"
+                      length="3"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]"
+                      name="write_off_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fee_write_off_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fee_write_off_id]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fee_write_off_id]"
+                      name="fee_write_off_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_tran_uno]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_tran_uno]"
+                      name="write_off_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      name="write_off_date" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
+                      dataType="numeric"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
+                      dataType="numeric"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
+                      dataType="numeric"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="write_off_type" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fee_write_off_id]"
+                      dataType="i4"
+                      name="fee_write_off_id" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_tran_uno]"
+                      dataType="i4"
+                      name="write_off_tran_uno" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fee_write_off_id]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fee_write_off_id]"
+                      name="fee_write_off_id" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_tran_uno]"
+                      name="write_off_tran_uno" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
+                      name="write_off_date" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_type]"
+                      name="write_off_type" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load write offs detail (adr_rpt).Paths[OLE DB Source Output]"
+              endId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load write offs detail (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{53BB5F80-2BDB-438D-B439-892A4D726B90}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load write offs detail (staging)">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load write offs detail (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fee_write_off_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load write offs detail (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_tran_uno"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="write_off_date"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_fees_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_fees_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_hard_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_hard_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_soft_amt]"
+                      cachedDataType="numeric"
+                      cachedName="write_off_soft_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="write_off_type"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      name="write_off_date" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
+                      dataType="numeric"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
+                      dataType="numeric"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
+                      dataType="numeric"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="write_off_type" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fee_write_off_id]"
+                      dataType="i4"
+                      name="fee_write_off_id" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_tran_uno]"
+                      dataType="i4"
+                      name="write_off_tran_uno" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load write offs detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load write offs detail (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_fee_write_off_detail]
+WITH RESULT SETS   
+(
+  (
+bill_tran_uno int,
+matter_number int,
+write_off_tran_number int,
+write_off_date datetime null,
+write_off_fees_amt decimal(25,10) null,
+write_off_hard_amt decimal(25,10) null,
+write_off_soft_amt decimal(25,10) null,
+write_off_type char(3)
+  )
+);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load write offs detail (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_tran_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_tran_number]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_tran_number]"
+                      name="write_off_tran_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date]"
+                      name="write_off_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_type]"
+                      length="3"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]"
+                      name="write_off_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_tran_number]"
+                      dataType="i4"
+                      name="write_off_tran_number" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      name="write_off_date" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
+                      dataType="numeric"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
+                      dataType="numeric"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
+                      dataType="numeric"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="write_off_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_tran_number]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_tran_number]"
+                      name="write_off_tran_number" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
+                      name="write_off_date" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
+                      name="write_off_fees_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
+                      name="write_off_hard_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
+                      name="write_off_soft_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_type]"
+                      name="write_off_type" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load write offs detail (staging).Paths[OLE DB Source Output]"
+              endId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate write offs detail (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DDB54D7F-DA38-4D2D-957C-CE4F1EC403DA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate write offs detail (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DA9FF508-27C2-4686-AA4F-E41B54A2410C}"
+          SQLTask:SqlStatementSource="truncate table fee_write_off_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{07355A26-B87B-4A01-B510-26E32441D361}"
+      DTS:From="Package\truncate write offs detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load write offs detail (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{FA136204-5030-4E80-ADF5-017C2491B322}"
+      DTS:From="Package\load write offs detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load write offs detail (adr_rpt)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\load write offs detail (adr_rpt)"
+          TopLeft="28,189" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\load write offs detail (staging)"
+          TopLeft="31.5,102.5" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\truncate write offs detail (staging)"
+          TopLeft="24,23" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="144,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="141.25,144.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.5"
+              Start="0,0"
+              End="0,37">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load write offs detail (adr_rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load write offs detail (adr_rpt)\OLE DB Destination"
+          TopLeft="570,175" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load write offs detail (adr_rpt)\OLE DB Source"
+          TopLeft="77,173" />
+        <EdgeLayout
+          Id="Package\load write offs detail (adr_rpt).Paths[OLE DB Source Output]"
+          TopLeft="229,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="341,0"
+              Start="0,0"
+              End="333.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="333.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load write offs detail (adr_rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load write offs detail (adr_rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load write offs detail (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load write offs detail (staging)\OLE DB Destination"
+          TopLeft="698,176" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load write offs detail (staging)\OLE DB Source"
+          TopLeft="94,175" />
+        <EdgeLayout
+          Id="Package\load write offs detail (staging).Paths[OLE DB Source Output]"
+          TopLeft="246,196.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="452,0"
+              Start="0,0"
+              End="444.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="444.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load write offs detail (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load write offs detail (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

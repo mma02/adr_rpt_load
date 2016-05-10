@@ -1,0 +1,1257 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/8/2016 4:32:29 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{8982B90A-E87D-4BA0-91F3-D1CB8023100F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="disbursments_billed_detail"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{82BD92C4-510C-4614-8F9E-C078C953BBE2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{448FA35F-FECF-4D8F-B99A-E7251284B11E}"
+      DTS:ObjectName="lvbasql1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_fact]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7CBE9CE9-9186-4260-BD6C-7959D82AC1BB}"
+      DTS:ObjectName="lvbbi-ssas01.adr_fact">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_fact;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4D33610B-37A3-4E15-A443-27A17755BD48}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{83BD8A21-EF72-4332-B632-B35A170680B9}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load disbursment detail (adr live)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1462C73E-8191-4613-8E9C-AE034BA07617}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load disbursment detail (adr live)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load disbursment detail (adr live)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[disbursment_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load disbursment detail (adr live)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_tran_uno"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="tran_date"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_date]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[period]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="period"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[period]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billed_amt]"
+                      cachedDataType="numeric"
+                      cachedName="billed_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billed_amt]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hardsoft]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="hardsoft"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardsoft]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cost_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="cost_code"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_code]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cost_desc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="cost_desc"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_desc]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_date]"
+                      dataType="dbTimeStamp"
+                      name="tran_date" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[period]"
+                      dataType="dbTimeStamp"
+                      name="period" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billed_amt]"
+                      dataType="numeric"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="hardsoft" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="cost_code" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="cost_desc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load disbursment detail (adr live)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load disbursment detail (adr live)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[disbursment_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load disbursment detail (adr live)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      name="tran_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[period]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]"
+                      name="period"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billed_amt]"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardsoft]"
+                      length="1"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]"
+                      name="hardsoft"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_code]"
+                      length="6"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]"
+                      name="cost_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_desc]"
+                      length="80"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]"
+                      name="cost_desc"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      dataType="dbTimeStamp"
+                      name="tran_date" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[period]"
+                      dataType="dbTimeStamp"
+                      name="period" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billed_amt]"
+                      dataType="numeric"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="hardsoft" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="cost_code" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="cost_desc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      name="tran_date" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[period]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[period]"
+                      name="period" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billed_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billed_amt]"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardsoft]"
+                      name="hardsoft" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_code]"
+                      name="cost_code" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_desc]"
+                      name="cost_desc" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load disbursment detail (adr live).Paths[OLE DB Source Output]"
+              endId="Package\load disbursment detail (adr live)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load disbursment detail (adr live)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load disbursment detail (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F1255E06-DACC-40C0-9F59-DDE06E21A0D4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load disbursment detail (staging)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load disbursment detail (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[disbursment_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load disbursment detail (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_tran_uno"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tran_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="tran_date"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_date]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[period]"
+                      cachedDataType="i4"
+                      cachedName="period"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[period]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billed_amt]"
+                      cachedDataType="numeric"
+                      cachedName="billed_amt"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billed_amt]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hardsoft]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="hardsoft"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardsoft]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cost_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="cost_code"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_code]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]" />
+                    <inputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cost_desc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="cost_desc"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_desc]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tran_date]"
+                      dataType="dbTimeStamp"
+                      name="tran_date" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[period]"
+                      dataType="dbTimeStamp"
+                      name="period" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billed_amt]"
+                      dataType="numeric"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="hardsoft" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="cost_code" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="cost_desc" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load disbursment detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load disbursment detail (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_disbursments_billed_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load disbursment detail (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                      name="tran_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[period]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[period]"
+                      name="period"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billed_amt]"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billed_amt]"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardsoft]"
+                      length="1"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[hardsoft]"
+                      name="hardsoft"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_code]"
+                      length="6"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_code]"
+                      name="cost_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_desc]"
+                      length="80"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[cost_desc]"
+                      name="cost_desc"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_tran_uno]"
+                      dataType="i4"
+                      name="bill_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                      dataType="dbTimeStamp"
+                      name="tran_date" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[period]"
+                      dataType="i4"
+                      name="period" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billed_amt]"
+                      dataType="numeric"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="hardsoft" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="cost_code" />
+                    <externalMetadataColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="cost_desc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
+                      name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                      name="tran_date" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[period]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[period]"
+                      name="period" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billed_amt]"
+                      dataType="numeric"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billed_amt]"
+                      name="billed_amt"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardsoft]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hardsoft]"
+                      name="hardsoft" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_code]"
+                      name="cost_code" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cost_desc]"
+                      name="cost_desc" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load disbursment detail (staging).Paths[OLE DB Source Output]"
+              endId="Package\load disbursment detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load disbursment detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate disbursment detail (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{82B726FD-4BCF-4377-B663-6CE1BFD9C20A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate disbursment detail (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83BD8A21-EF72-4332-B632-B35A170680B9}"
+          SQLTask:SqlStatementSource="truncate table disbursment_detail " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E31B5027-D8CD-4371-9F20-CC664B9C16C2}"
+      DTS:From="Package\truncate disbursment detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load disbursment detail (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{627F67D5-7C46-439B-B64B-9731EE8BF8DA}"
+      DTS:From="Package\load disbursment detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load disbursment detail (adr live)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237,42"
+          Id="Package\load disbursment detail (adr live)"
+          TopLeft="62,157" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\load disbursment detail (staging)"
+          TopLeft="57,83" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\truncate disbursment detail (staging)"
+          TopLeft="45,8" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="173.75,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="177.75,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load disbursment detail (adr live)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load disbursment detail (adr live)\OLE DB Destination"
+          TopLeft="505,165" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load disbursment detail (adr live)\OLE DB Source"
+          TopLeft="101,163" />
+        <EdgeLayout
+          Id="Package\load disbursment detail (adr live).Paths[OLE DB Source Output]"
+          TopLeft="253,185">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="252,0"
+              Start="0,0"
+              End="244.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="244.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load disbursment detail (adr live)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load disbursment detail (adr live)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load disbursment detail (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load disbursment detail (staging)\OLE DB Destination"
+          TopLeft="618,102" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load disbursment detail (staging)\OLE DB Source"
+          TopLeft="73,99" />
+        <EdgeLayout
+          Id="Package\load disbursment detail (staging).Paths[OLE DB Source Output]"
+          TopLeft="225,121.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="393,0"
+              Start="0,0"
+              End="385.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="385.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load disbursment detail (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load disbursment detail (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

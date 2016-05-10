@@ -1,0 +1,2309 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/6/2016 10:10:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{70594E0F-134D-4592-BF40-DFC8B6EEC081}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="client_details"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{4F0C87D2-6B4B-4CB6-B4F1-71052C753D8D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_LIVE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5B7F3AF8-CACC-487A-88E6-9012EF8E454F}"
+      DTS:ObjectName="lvbasql1.ADR_LIVE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_LIVE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8F1D57AE-B6F3-4D8A-91D8-DD9327F73F62}"
+      DTS:ObjectName="lvbasql1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{78FC4A30-5A62-47EE-933E-0BA0CC8331EF}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2A243470-1326-4B32-A0ED-25B19FC30A8D}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load client details (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F5D76E58-3546-423D-961E-7B00614518D6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load client details (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load client details (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[client_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load client details (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="client_code"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_short_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_short_name"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_short_name]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="120"
+                      cachedName="client_name"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_name]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_billing_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_billing_atty_name"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_name]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_billing_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="client_billing_atty_code"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_code]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_orig_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_orig_atty_name"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_name]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_orig_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="client_orig_atty_code"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_code]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="stact_address"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_address]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="stact_state"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_state]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="stact_country"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_country]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="stact_city"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_city]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_postal_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="stact_postal_code"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_postal_code]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_po_box]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="stact_po_box"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_po_box]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="default_rate_level_id"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="default_rate_level"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="previous_rate_level_id"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="previous_rate_level"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate_id]"
+                      cachedDataType="i4"
+                      cachedName="variable_rate_id"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="variable_rate"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_variable_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="effective_variable_date"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]" />
+                    <inputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_client_override]"
+                      cachedDataType="i4"
+                      cachedName="has_client_override"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_client_override]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="client_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_orig_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_orig_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_address" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="stact_state" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="stact_country" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_city" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stact_postal_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="stact_po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_client_override]"
+                      dataType="i4"
+                      name="has_client_override" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load client details (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load client details (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[client_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load client details (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      length="10"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      name="client_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_short_name]"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]"
+                      name="client_short_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_name]"
+                      length="120"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]"
+                      name="client_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_name]"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]"
+                      name="client_billing_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_code]"
+                      length="6"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]"
+                      name="client_billing_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_name]"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]"
+                      name="client_orig_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_code]"
+                      length="6"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]"
+                      name="client_orig_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_address]"
+                      length="60"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]"
+                      name="stact_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_state]"
+                      length="8"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]"
+                      name="stact_state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_country]"
+                      length="5"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]"
+                      name="stact_country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_city]"
+                      length="60"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]"
+                      name="stact_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_postal_code]"
+                      length="10"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]"
+                      name="stact_postal_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_po_box]"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]"
+                      name="stact_po_box"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      name="default_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      name="previous_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      name="variable_rate_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      name="variable_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      name="effective_variable_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_client_override]"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]"
+                      name="has_client_override"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="client_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_orig_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_orig_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_address" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="stact_state" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="stact_country" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_city" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stact_postal_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="stact_po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_client_override]"
+                      dataType="i4"
+                      name="has_client_override" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      name="client_code" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_short_name]"
+                      name="client_short_name" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_name]"
+                      name="client_name" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_name]"
+                      name="client_billing_atty_name" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_code]"
+                      name="client_billing_atty_code" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_name]"
+                      name="client_orig_atty_name" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_code]"
+                      name="client_orig_atty_code" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_address]"
+                      name="stact_address" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_state]"
+                      name="stact_state" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_country]"
+                      name="stact_country" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_city]"
+                      name="stact_city" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_postal_code]"
+                      name="stact_postal_code" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_po_box]"
+                      name="stact_po_box" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      name="default_rate_level" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      name="previous_rate_level" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      name="variable_rate_id" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      name="variable_rate" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      name="effective_variable_date" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_client_override]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_client_override]"
+                      name="has_client_override" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load client details (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load client details (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load client details (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load client details (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0C047A1A-B24B-43C3-BF32-B48994935497}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load client details (staging)">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load client details (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[client_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load client details (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="client_code"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_short_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_short_name"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_short_name]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="120"
+                      cachedName="client_name"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_name]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_billing_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_billing_atty_name"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_name]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_billing_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="client_billing_atty_code"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_code]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_orig_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="client_orig_atty_name"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_name]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_orig_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="client_orig_atty_code"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_code]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="stact_address"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_address]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="stact_state"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_state]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="stact_country"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_country]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="stact_city"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_city]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_postal_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="stact_postal_code"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_postal_code]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stact_po_box]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="stact_po_box"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_po_box]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="default_rate_level_id"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="default_rate_level"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="previous_rate_level_id"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="previous_rate_level"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate_id]"
+                      cachedDataType="i4"
+                      cachedName="variable_rate_id"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="variable_rate"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_variable_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="effective_variable_date"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]" />
+                    <inputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_client_override]"
+                      cachedDataType="i4"
+                      cachedName="has_client_override"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_client_override]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="client_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_orig_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_orig_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_address" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="stact_state" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="stact_country" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_city" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stact_postal_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="stact_po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_client_override]"
+                      dataType="i4"
+                      name="has_client_override" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load client details (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load client details (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_client_details]
+WITH RESULT SETS   
+(
+  (
+	client_code char(10) null,
+	client_short_name varchar(40) null,
+	client_name varchar(120) null,
+	client_billing_atty_name varchar(40) null,
+	client_billing_atty_code char(6) null,
+	client_orig_atty_name varchar(40) null,
+	client_orig_atty_code char(6) null,
+	stact_address varchar(60) null,
+	stact_state varchar(8) null,
+	stact_country varchar(5) null,
+	stact_city varchar(60) null,
+	stact_postal_code varchar(10) null,
+	stact_po_box varchar(40) null,
+	default_rate_level_id int,
+	default_rate_level varchar(80),
+	previous_rate_level_id int,
+	previous_rate_level varchar(80),
+	variable_rate_id int,
+	variable_rate varchar(80),
+	effective_variable_date datetime,
+	has_client_override int--,
+	--client_group_code varchar(6) null,
+	--client_group_desc varchar(50) null,
+	--relation_atty_code1 char(6) null,
+	--relation_atty_name1 varchar(40) null,
+	--relation_atty_code2 char(6) null,
+	--relation_atty_name2 varchar(40) null,
+	--relation_atty_code3 char(6) null,
+	--relation_atty_name3 varchar(40) null
+  )
+);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load client details (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      length="10"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      name="client_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_short_name]"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_short_name]"
+                      name="client_short_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_name]"
+                      length="120"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_name]"
+                      name="client_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_name]"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_name]"
+                      name="client_billing_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_code]"
+                      length="6"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_billing_atty_code]"
+                      name="client_billing_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_name]"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_name]"
+                      name="client_orig_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_code]"
+                      length="6"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_orig_atty_code]"
+                      name="client_orig_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_address]"
+                      length="60"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_address]"
+                      name="stact_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_state]"
+                      length="8"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_state]"
+                      name="stact_state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_country]"
+                      length="5"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_country]"
+                      name="stact_country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_city]"
+                      length="60"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_city]"
+                      name="stact_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_postal_code]"
+                      length="10"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_postal_code]"
+                      name="stact_postal_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_po_box]"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[stact_po_box]"
+                      name="stact_po_box"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      name="default_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      name="previous_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      name="variable_rate_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      name="variable_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      name="effective_variable_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_client_override]"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_client_override]"
+                      name="has_client_override"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      name="client_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="client_orig_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="client_orig_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_address" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="stact_state" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="stact_country" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="stact_city" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="stact_postal_code" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="stact_po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_client_override]"
+                      dataType="i4"
+                      name="has_client_override" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      name="client_code" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_short_name]"
+                      name="client_short_name" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="120"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_name]"
+                      name="client_name" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_name]"
+                      name="client_billing_atty_name" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_billing_atty_code]"
+                      name="client_billing_atty_code" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_name]"
+                      name="client_orig_atty_name" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_orig_atty_code]"
+                      name="client_orig_atty_code" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_address]"
+                      name="stact_address" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_state]"
+                      name="stact_state" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_country]"
+                      name="stact_country" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_city]"
+                      name="stact_city" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_postal_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_postal_code]"
+                      name="stact_postal_code" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_po_box]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[stact_po_box]"
+                      name="stact_po_box" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      name="default_rate_level" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      name="previous_rate_level" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      name="variable_rate_id" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      name="variable_rate" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      name="effective_variable_date" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_client_override]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_client_override]"
+                      name="has_client_override" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load client details (staging).Paths[OLE DB Source Output]"
+              endId="Package\load client details (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load client details (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate client details (adr rpt)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FB0F1C68-7735-4111-A0B9-5B638CAFDCE1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate client details (adr rpt)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{78FC4A30-5A62-47EE-933E-0BA0CC8331EF}"
+          SQLTask:SqlStatementSource="truncate table client_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate client details (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6AF4B99E-25BF-4B6D-B03A-45CA8A4B6345}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate client details (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2A243470-1326-4B32-A0ED-25B19FC30A8D}"
+          SQLTask:SqlStatementSource="truncate table client_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{23B8B92B-B8D0-49FE-9791-E9B1DC40B481}"
+      DTS:From="Package\truncate client details (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load client details (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{46161082-0C47-48E9-A723-03E4A6EA4892}"
+      DTS:From="Package\load client details (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\truncate client details (adr rpt)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{DA8B5171-760D-4540-8EA7-F3694A74505A}"
+      DTS:From="Package\truncate client details (adr rpt)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\load client details (adr rpt)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\load client details (adr rpt)"
+          TopLeft="25,294" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\load client details (staging)"
+          TopLeft="27.5,113.5" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\truncate client details (adr rpt)"
+          TopLeft="15,206" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\truncate client details (staging)"
+          TopLeft="14,19" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="129.75,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="129.5,155.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.5"
+              Start="0,0"
+              End="0,43">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127.75,248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load client details (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load client details (adr rpt)\OLE DB Source"
+          TopLeft="128,215" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load client details (adr rpt)\OLE DB Destination"
+          TopLeft="505,218" />
+        <EdgeLayout
+          Id="Package\load client details (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="280,237.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="225,0"
+              Start="0,0"
+              End="217.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="217.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load client details (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load client details (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load client details (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load client details (staging)\OLE DB Source"
+          TopLeft="172,146" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load client details (staging)\OLE DB Destination"
+          TopLeft="718,147" />
+        <EdgeLayout
+          Id="Package\load client details (staging).Paths[OLE DB Source Output]"
+          TopLeft="324,167.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="394,0"
+              Start="0,0"
+              End="386.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="386.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load client details (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load client details (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

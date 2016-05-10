@@ -1,0 +1,2385 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/6/2016 9:34:00 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{6D8B3877-A520-4277-B31F-8629F3480C6A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="matter_details"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{0CA38C04-DD45-46D6-AB89-9C6F4450BE9C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3173493C-82E7-4125-B8BF-DEEF44A99D68}"
+      DTS:ObjectName="LVBASQL1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LVBASQL1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_dim]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6ED738AB-1E53-42EE-8B88-C98C13143866}"
+      DTS:ObjectName="lvbbi-ssas01.adr_dim">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_dim;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DE978846-C541-4E2D-BFA1-D54A126E724E}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DDBA6BC7-3A4C-4DDA-97E0-0065377C0FD1}"
+      DTS:ObjectName="LVBBI-SSAS01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LVBBI-SSAS01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VBADR-SQL-PROD.ADR_LIVE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3CE74F69-1246-40F8-90D0-1FF315257E6D}"
+      DTS:ObjectName="VBADR-SQL-PROD.ADR_LIVE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=VBADR-SQL-PROD;Initial Catalog=ADR_LIVE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load matter detail (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{38DFA29C-816E-4F2C-9952-546E7385553F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load matter detail (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load matter detail (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter detail (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="client_code"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_short_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_short_name"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_short_name]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="matter_name"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_name]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_billing_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_billing_atty_name"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_name]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_billing_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="matter_billing_atty_code"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_code]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_resp_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_resp_atty_name"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_name]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_resp_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="matter_resp_atty_code"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_code]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billing_coordinator_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="billing_coordinator_name"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_name]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billing_coordinator_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="billing_coordinator_code"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_code]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[external_ebilling_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="external_ebilling_number"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[external_ebilling_number]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[open_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="open_date"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[close_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="close_date"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[status_desc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="status_desc"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_desc]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="default_rate_level_id"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="default_rate_level"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="previous_rate_level_id"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="previous_rate_level"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate_id]"
+                      cachedDataType="i4"
+                      cachedName="variable_rate_id"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="variable_rate"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_variable_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="effective_variable_date"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_rateset_override]"
+                      cachedDataType="i4"
+                      cachedName="has_rateset_override"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_rateset_override]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_matter_override]"
+                      cachedDataType="i4"
+                      cachedName="has_matter_override"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="matter_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_resp_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_resp_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="billing_coordinator_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="external_ebilling_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date]"
+                      dataType="dbTimeStamp"
+                      name="open_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date]"
+                      dataType="dbTimeStamp"
+                      name="close_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="status_desc" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_rateset_override]"
+                      dataType="i4"
+                      name="has_rateset_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
+                      dataType="i4"
+                      name="has_matter_override" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load matter detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load matter detail (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter detail (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      length="10"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      name="client_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_short_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]"
+                      name="matter_short_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_name]"
+                      length="250"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]"
+                      name="matter_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]"
+                      name="matter_billing_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]"
+                      name="matter_billing_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]"
+                      name="matter_resp_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]"
+                      name="matter_resp_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]"
+                      name="billing_coordinator_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]"
+                      name="billing_coordinator_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[external_ebilling_number]"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]"
+                      name="external_ebilling_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]"
+                      name="open_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]"
+                      name="close_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_desc]"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]"
+                      name="status_desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      name="default_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      name="previous_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      name="variable_rate_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      name="variable_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      name="effective_variable_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_rateset_override]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]"
+                      name="has_rateset_override"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
+                      name="has_matter_override"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="matter_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_resp_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_resp_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="billing_coordinator_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="external_ebilling_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                      dataType="dbTimeStamp"
+                      name="open_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                      dataType="dbTimeStamp"
+                      name="close_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="status_desc" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_rateset_override]"
+                      dataType="i4"
+                      name="has_rateset_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
+                      dataType="i4"
+                      name="has_matter_override" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      name="client_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_short_name]"
+                      name="matter_short_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_name]"
+                      name="matter_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_name]"
+                      name="matter_billing_atty_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_code]"
+                      name="matter_billing_atty_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_name]"
+                      name="matter_resp_atty_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_code]"
+                      name="matter_resp_atty_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_name]"
+                      name="billing_coordinator_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_code]"
+                      name="billing_coordinator_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
+                      name="external_ebilling_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                      name="open_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                      name="close_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
+                      name="status_desc" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      name="default_rate_level" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      name="previous_rate_level" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      name="variable_rate_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      name="variable_rate" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      name="effective_variable_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_rateset_override]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_rateset_override]"
+                      name="has_rateset_override" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_matter_override]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_matter_override]"
+                      name="has_matter_override" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load matter detail (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load matter detail (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1A66D31C-4CF9-4A04-B376-C2D475E41393}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load matter detail (staging)">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load matter detail (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter detail (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBBI-SSAS01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[client_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="client_code"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_short_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_short_name"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_short_name]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="matter_name"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_name]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_billing_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_billing_atty_name"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_name]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_billing_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="matter_billing_atty_code"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_code]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_resp_atty_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="matter_resp_atty_name"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_name]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_resp_atty_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="matter_resp_atty_code"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_code]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billing_coordinator_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="billing_coordinator_name"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_name]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billing_coordinator_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="billing_coordinator_code"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_code]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[external_ebilling_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="external_ebilling_number"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[external_ebilling_number]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[open_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="open_date"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[close_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="close_date"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[status_desc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="status_desc"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_desc]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="default_rate_level_id"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[default_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="default_rate_level"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level_id]"
+                      cachedDataType="i4"
+                      cachedName="previous_rate_level_id"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[previous_rate_level]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="previous_rate_level"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate_id]"
+                      cachedDataType="i4"
+                      cachedName="variable_rate_id"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[variable_rate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="80"
+                      cachedName="variable_rate"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_variable_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="effective_variable_date"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_rateset_override]"
+                      cachedDataType="i4"
+                      cachedName="has_rateset_override"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_rateset_override]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[has_matter_override]"
+                      cachedDataType="i4"
+                      cachedName="has_matter_override"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="matter_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_resp_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_resp_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="billing_coordinator_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="external_ebilling_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date]"
+                      dataType="dbTimeStamp"
+                      name="open_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date]"
+                      dataType="dbTimeStamp"
+                      name="close_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="status_desc" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_rateset_override]"
+                      dataType="i4"
+                      name="has_rateset_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
+                      dataType="i4"
+                      name="has_matter_override" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load matter detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load matter detail (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_matter_details]
+WITH RESULT SETS   
+(
+  (
+	client_code char(10) null,
+	matter_number int null,
+	matter_short_name varchar(40),
+	matter_name varchar(250) null,
+	matter_billing_atty_name varchar(40) null,
+	matter_billing_atty_code char(6) null,
+	matter_resp_atty_name varchar(40) null,
+	matter_resp_atty_code char(6) null,
+	billing_coordinator_name varchar(40) null,
+	billing_coordinator_code char(6) null,
+	external_ebilling_number varchar(50) null,
+	open_date datetime null,
+	close_date datetime null,
+	status_desc varchar(80) null,
+	default_rate_level_id int,
+	default_rate_level varchar(80),
+	previous_rate_level_id int,
+	previous_rate_level varchar(80),
+	variable_rate_id int,
+	variable_rate varchar(80),
+	effective_variable_date datetime,
+	has_rateset_override int,
+	has_matter_override int
+  )
+);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter detail (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[LVBASQL1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      length="10"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
+                      name="client_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_short_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_short_name]"
+                      name="matter_short_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_name]"
+                      length="250"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_name]"
+                      name="matter_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_name]"
+                      name="matter_billing_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_billing_atty_code]"
+                      name="matter_billing_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_name]"
+                      name="matter_resp_atty_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_resp_atty_code]"
+                      name="matter_resp_atty_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_name]"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_name]"
+                      name="billing_coordinator_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_code]"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billing_coordinator_code]"
+                      name="billing_coordinator_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[external_ebilling_number]"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[external_ebilling_number]"
+                      name="external_ebilling_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date]"
+                      name="open_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date]"
+                      name="close_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_desc]"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[status_desc]"
+                      name="status_desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[default_rate_level]"
+                      name="default_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[previous_rate_level]"
+                      name="previous_rate_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate_id]"
+                      name="variable_rate_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[variable_rate]"
+                      name="variable_rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[effective_variable_date]"
+                      name="effective_variable_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_rateset_override]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_rateset_override]"
+                      name="has_rateset_override"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
+                      name="has_matter_override"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_short_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="matter_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_billing_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_billing_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="matter_resp_atty_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="matter_resp_atty_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="billing_coordinator_name" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="external_ebilling_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date]"
+                      dataType="dbTimeStamp"
+                      name="open_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date]"
+                      dataType="dbTimeStamp"
+                      name="close_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="status_desc" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level_id]"
+                      dataType="i4"
+                      name="default_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="default_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level_id]"
+                      dataType="i4"
+                      name="previous_rate_level_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="previous_rate_level" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate_id]"
+                      dataType="i4"
+                      name="variable_rate_id" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      name="variable_rate" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      name="effective_variable_date" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_rateset_override]"
+                      dataType="i4"
+                      name="has_rateset_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
+                      dataType="i4"
+                      name="has_matter_override" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
+                      name="client_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_short_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_short_name]"
+                      name="matter_short_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_name]"
+                      name="matter_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_name]"
+                      name="matter_billing_atty_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_billing_atty_code]"
+                      name="matter_billing_atty_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_name]"
+                      name="matter_resp_atty_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_resp_atty_code]"
+                      name="matter_resp_atty_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_name]"
+                      name="billing_coordinator_name" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billing_coordinator_code]"
+                      name="billing_coordinator_code" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
+                      name="external_ebilling_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
+                      name="open_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
+                      name="close_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
+                      name="status_desc" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level_id]"
+                      name="default_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[default_rate_level]"
+                      name="default_rate_level" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level_id]"
+                      name="previous_rate_level_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[previous_rate_level]"
+                      name="previous_rate_level" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate_id]"
+                      name="variable_rate_id" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="80"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[variable_rate]"
+                      name="variable_rate" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[effective_variable_date]"
+                      name="effective_variable_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_rateset_override]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_rateset_override]"
+                      name="has_rateset_override" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_matter_override]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[has_matter_override]"
+                      name="has_matter_override" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load matter detail (staging).Paths[OLE DB Source Output]"
+              endId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate matter detail (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1D8B4F6B-1EF8-4D64-BD3C-DFDBCA191E8D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate matter detail (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DDBA6BC7-3A4C-4DDA-97E0-0065377C0FD1}"
+          SQLTask:SqlStatementSource="truncate table matter_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate table matter detail (adr rpt)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2BEBFE80-9F32-4C1C-A789-DE71A498817D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate table matter detail (adr rpt)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DE978846-C541-4E2D-BFA1-D54A126E724E}"
+          SQLTask:SqlStatementSource="truncate table matter_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1BAAC049-BDF3-4E78-AEA5-8FB4E7D15A24}"
+      DTS:From="Package\truncate matter detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load matter detail (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{24D4177D-453B-4B45-9F8B-5C4A628E6955}"
+      DTS:From="Package\load matter detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\truncate table matter detail (adr rpt)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{DC47D1BA-0143-4F46-B744-E6CE8C5CC95E}"
+      DTS:From="Package\truncate table matter detail (adr rpt)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\load matter detail (adr rpt)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\load matter detail (adr rpt)"
+          TopLeft="40,247" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\load matter detail (staging)"
+          TopLeft="43.5,87.5" />
+        <NodeLayout
+          Size="229,42"
+          Id="Package\truncate matter detail (staging)"
+          TopLeft="33,8" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\truncate table matter detail (adr rpt)"
+          TopLeft="23,173" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="148,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="149,129.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5"
+              Start="0,0"
+              End="0,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="146.75,215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load matter detail (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load matter detail (adr rpt)\OLE DB Source"
+          TopLeft="78,201" />
+        <NodeLayout
+          Size="173,44"
+          Id="Package\load matter detail (adr rpt)\OLE DB Destination"
+          TopLeft="475,206" />
+        <EdgeLayout
+          Id="Package\load matter detail (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="230,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="245,0"
+              Start="0,0"
+              End="237.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="237.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter detail (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter detail (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load matter detail (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load matter detail (staging)\OLE DB Source"
+          TopLeft="162,105" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load matter detail (staging)\OLE DB Destination"
+          TopLeft="744,103" />
+        <EdgeLayout
+          Id="Package\load matter detail (staging).Paths[OLE DB Source Output]"
+          TopLeft="314,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="430,0"
+              Start="0,0"
+              End="422.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="422.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter detail (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter detail (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1333 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/6/2016 2:12:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{8A6EFAA0-67A8-4B9C-BDF5-C56B0916A001}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="prebill_detail"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{F9435109-AB90-42FD-ABCE-4D9A62C6E231}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{203BDA04-5CB4-4F28-96A3-28BD74A0432E}"
+      DTS:ObjectName="lvbasql1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_fact]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DAB5F621-0015-4B7F-891F-CA62E654D2BA}"
+      DTS:ObjectName="lvbbi-ssas01.adr_fact">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_fact;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{80CA6689-9216-4D20-B797-13C91E9F396D}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9A6A6EF8-1C32-4EB3-8C1B-D5A5051A31D5}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load prebill detail (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0C83399C-CA3E-443A-B776-190D5A161ADB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load prebill detail (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load prebill detail (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[prebill_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prebill_num]"
+                      cachedDataType="i4"
+                      cachedName="prebill_num"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prebill_num]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billgrp_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="billgrp_code"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_num]"
+                      cachedDataType="i4"
+                      cachedName="matter_num"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_num]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_num]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="bill_date"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_PBILL_STATUS_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="_PBILL_STATUS_DATE"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_DATE]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_PBILL_STATUS_NOTES]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="260"
+                      cachedName="_PBILL_STATUS_NOTES"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_bill]"
+                      cachedDataType="numeric"
+                      cachedName="fees_bill"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_bill]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bill]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pb_billing_coordinator_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="pb_billing_coordinator_code"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_code]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_code]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pb_billing_coordinator_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="pb_billing_coordinator_name"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_name]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prebill_num]"
+                      dataType="i4"
+                      name="prebill_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="billgrp_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_num]"
+                      dataType="i4"
+                      name="matter_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
+                      dataType="dbTimeStamp"
+                      name="bill_date" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      name="_PBILL_STATUS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      name="_PBILL_STATUS_NOTES" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_bill]"
+                      dataType="numeric"
+                      name="fees_bill"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="pb_billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="pb_billing_coordinator_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load prebill detail (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[prebill_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prebill_num]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]"
+                      name="prebill_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_code]"
+                      length="10"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]"
+                      name="billgrp_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_num]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_num]"
+                      name="matter_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
+                      name="bill_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_DATE]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]"
+                      name="_PBILL_STATUS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      length="260"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]"
+                      name="_PBILL_STATUS_NOTES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bill]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_bill]"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bill]"
+                      name="fees_bill"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pb_billing_coordinator_code]"
+                      length="6"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_code]"
+                      name="pb_billing_coordinator_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pb_billing_coordinator_name]"
+                      length="40"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[pb_billing_coordinator_name]"
+                      name="pb_billing_coordinator_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prebill_num]"
+                      dataType="i4"
+                      name="prebill_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="billgrp_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_num]"
+                      dataType="i4"
+                      name="matter_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
+                      dataType="dbTimeStamp"
+                      name="bill_date" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      name="_PBILL_STATUS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      name="_PBILL_STATUS_NOTES" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_bill]"
+                      dataType="numeric"
+                      name="fees_bill"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pb_billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="pb_billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pb_billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="pb_billing_coordinator_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
+                      name="prebill_num" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
+                      name="billgrp_code" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_num]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_num]"
+                      name="matter_num" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
+                      name="bill_date" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_DATE]"
+                      name="_PBILL_STATUS_DATE" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_NOTES]"
+                      name="_PBILL_STATUS_NOTES" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_bill]"
+                      dataType="numeric"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_bill]"
+                      name="fees_bill"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pb_billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pb_billing_coordinator_code]"
+                      name="pb_billing_coordinator_code" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pb_billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pb_billing_coordinator_name]"
+                      name="pb_billing_coordinator_name" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load prebill detail (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load prebill detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load prebill detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load prebill detail (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5B83D415-3084-46DF-A791-DAA4C18EA031}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load prebill detail (staging)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load prebill detail (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[prebill_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load prebill detail (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prebill_num]"
+                      cachedDataType="i4"
+                      cachedName="prebill_num"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prebill_num]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billgrp_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="billgrp_code"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_PBILL_STATUS_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="_PBILL_STATUS_DATE"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_DATE]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_PBILL_STATUS_NOTES]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="260"
+                      cachedName="_PBILL_STATUS_NOTES"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_num]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_bil]"
+                      cachedDataType="numeric"
+                      cachedName="fees_bil"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_bill]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bil]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="employee_name"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_name]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="employee_code"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_code]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]" />
+                    <inputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="bill_date"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prebill_num]"
+                      dataType="i4"
+                      name="prebill_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="billgrp_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_num]"
+                      dataType="i4"
+                      name="matter_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
+                      dataType="dbTimeStamp"
+                      name="bill_date" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      name="_PBILL_STATUS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      name="_PBILL_STATUS_NOTES" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_bill]"
+                      dataType="numeric"
+                      name="fees_bill"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="pb_billing_coordinator_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pb_billing_coordinator_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="pb_billing_coordinator_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load prebill detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load prebill detail (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_prebill_detail]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load prebill detail (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prebill_num]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[prebill_num]"
+                      name="prebill_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_code]"
+                      length="10"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]"
+                      name="billgrp_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
+                      name="bill_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_DATE]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_DATE]"
+                      name="_PBILL_STATUS_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      length="260"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_PBILL_STATUS_NOTES]"
+                      name="_PBILL_STATUS_NOTES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bil]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_bil]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_bil]"
+                      name="fees_bil"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_name]"
+                      length="40"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_name]"
+                      name="employee_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_code]"
+                      length="6"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_code]"
+                      name="employee_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prebill_num]"
+                      dataType="i4"
+                      name="prebill_num" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="billgrp_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
+                      dataType="dbTimeStamp"
+                      name="bill_date" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      name="_PBILL_STATUS_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      name="_PBILL_STATUS_NOTES" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_bil]"
+                      dataType="numeric"
+                      name="fees_bil"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="employee_name" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="employee_code" />
+                    <externalMetadataColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
+                      name="prebill_num" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
+                      name="billgrp_code" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
+                      name="bill_date" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_DATE]"
+                      name="_PBILL_STATUS_DATE" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_NOTES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="260"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_PBILL_STATUS_NOTES]"
+                      name="_PBILL_STATUS_NOTES" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_bil]"
+                      dataType="numeric"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_bil]"
+                      name="fees_bil"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_name]"
+                      name="employee_name" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_code]"
+                      name="employee_code" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load prebill detail (staging).Paths[OLE DB Source Output]"
+              endId="Package\load prebill detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load prebill detail (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate prebill detail (staging)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{66E38E71-072E-48E1-AE97-A62A831AAC71}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate prebill detail (staging)"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9A6A6EF8-1C32-4EB3-8C1B-D5A5051A31D5}"
+          SQLTask:SqlStatementSource="truncate table prebill_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{345E0685-0C56-4E4E-AE16-D514CE69E164}"
+      DTS:From="Package\truncate prebill detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load prebill detail (staging)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C67C24B-F814-4EC2-8AB0-44370C734AAC}"
+      DTS:From="Package\load prebill detail (staging)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\load prebill detail (adr rpt)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\load prebill detail (adr rpt)"
+          TopLeft="41,200" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\load prebill detail (staging)"
+          TopLeft="42,113" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\truncate prebill detail (staging)"
+          TopLeft="35,20" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="146.75,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="144.5,155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load prebill detail (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load prebill detail (adr rpt)\OLE DB Source"
+          TopLeft="132,212" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load prebill detail (adr rpt)\OLE DB Destination"
+          TopLeft="534,207" />
+        <EdgeLayout
+          Id="Package\load prebill detail (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="284,230.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250,0"
+              Start="0,0"
+              End="242.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="242.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load prebill detail (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load prebill detail (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load prebill detail (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load prebill detail (staging)\OLE DB Source"
+          TopLeft="99,109" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load prebill detail (staging)\OLE DB Destination"
+          TopLeft="683,110" />
+        <EdgeLayout
+          Id="Package\load prebill detail (staging).Paths[OLE DB Source Output]"
+          TopLeft="251,130.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="432,0"
+              Start="0,0"
+              End="424.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="424.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="187.05234375,5,50.3953125,11.228515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load prebill detail (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load prebill detail (staging)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
