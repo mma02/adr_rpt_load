@@ -25,7 +25,7 @@ name_uno int null)
 insert into #stact_addresses
 exec [_ven_getSTACTAddresses] 
 
-select bg.billgrp_code, c.client_code--, hm.matter_number
+select bg.billgrp_code, bg.billgrp_uno, c.client_code--, hm.matter_number
 ,bg.billgrp_desc
 , CASE WHEN bga.address1='' OR bga.address1 is null then ca.address1 ELSE bga.address1 END AS address1
 , CASE WHEN bga.STATE_CODE='' OR bga.STATE_CODE is null then ca.STATE_CODE ELSE bga.STATE_CODE End AS state_code

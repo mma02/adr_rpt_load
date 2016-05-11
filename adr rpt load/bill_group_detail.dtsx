@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="4/6/2016 3:01:14 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="bill_group_detail"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{5CCDD244-97FF-49C3-9A79-2F488B907BDA}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{989875A6-5A6C-47F8-BEDB-F0E89D4A67AA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -217,6 +217,12 @@
                       cachedName="client_code"
                       externalMetadataColumnId="Package\load bill group detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_code]"
                       lineageId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]" />
+                    <inputColumn
+                      refId="Package\load bill group detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billgrp_uno]"
+                      cachedDataType="i4"
+                      cachedName="billgrp_uno"
+                      externalMetadataColumnId="Package\load bill group detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -274,6 +280,10 @@
                       dataType="str"
                       length="10"
                       name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load bill group detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -332,6 +342,7 @@ WITH RESULT SETS
 (
   (
     bill_group_code char(10) null,
+	billgrp_uno int,
     client_code char(10) null,
     --matter_number int null,
     bill_group_desc varchar(80) null,
@@ -477,6 +488,15 @@ WITH RESULT SETS
                       lineageId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[client_code]"
                       name="client_code"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
+                      lineageId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
+                      name="billgrp_uno"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -534,6 +554,10 @@ WITH RESULT SETS
                       dataType="str"
                       length="10"
                       name="client_code" />
+                    <externalMetadataColumn
+                      refId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
+                      dataType="i4"
+                      name="billgrp_uno" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -541,6 +565,11 @@ WITH RESULT SETS
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_uno]"
+                      dataType="i4"
+                      lineageId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_uno]"
+                      name="billgrp_uno" />
                     <outputColumn
                       refId="Package\load bill group detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_group_code]"
                       codePage="1252"
@@ -790,6 +819,12 @@ WITH RESULT SETS
                       cachedName="po_box"
                       externalMetadataColumnId="Package\load bill_group_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[po_box]"
                       lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[po_box]" />
+                    <inputColumn
+                      refId="Package\load bill_group_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_grp_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_grp_uno"
+                      externalMetadataColumnId="Package\load bill_group_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -847,6 +882,10 @@ WITH RESULT SETS
                       dataType="str"
                       length="40"
                       name="po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load bill_group_detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1035,6 +1074,15 @@ WITH RESULT SETS
                       lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[po_box]"
                       name="po_box"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
+                      name="bill_grp_uno"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1092,6 +1140,10 @@ WITH RESULT SETS
                       dataType="str"
                       length="40"
                       name="po_box" />
+                    <externalMetadataColumn
+                      refId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1106,6 +1158,11 @@ WITH RESULT SETS
                       length="10"
                       lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_group_code]"
                       name="bill_group_code" />
+                    <outputColumn
+                      refId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_grp_uno]"
+                      dataType="i4"
+                      lineageId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_grp_uno]"
+                      name="bill_grp_uno" />
                     <outputColumn
                       refId="Package\load bill_group_detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[client_code]"
                       codePage="1252"

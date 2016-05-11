@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="4/6/2016 3:28:39 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fees_summary"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{CD508DAF-954E-4AD1-8511-0CD702A22E64}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{E2716788-36E4-4EB7-8818-840473FA4DD6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1275,6 +1275,12 @@
                       cachedScale="10"
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
+                    <inputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_grp_uno]"
+                      cachedDataType="i4"
+                      cachedName="bill_grp_uno"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1382,6 +1388,10 @@
                       name="std_amt"
                       precision="25"
                       scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1675,6 +1685,15 @@
                       precision="25"
                       scale="10"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
+                      name="bill_grp_uno"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1782,6 +1801,10 @@
                       name="std_amt"
                       precision="25"
                       scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1794,6 +1817,11 @@
                       dataType="i4"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
                       name="fees_summary_id" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_grp_uno]"
+                      dataType="i4"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_grp_uno]"
+                      name="bill_grp_uno" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       dataType="i4"
@@ -3179,6 +3207,12 @@
                       cachedScale="10"
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
+                    <inputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billgrp_uno]"
+                      cachedDataType="i4"
+                      cachedName="billgrp_uno"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3286,6 +3320,10 @@
                       name="std_amt"
                       precision="25"
                       scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
+                      dataType="i4"
+                      name="bill_grp_uno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3343,6 +3381,7 @@
 WITH RESULT SETS
 (
   (
+billgrp_uno int,
 bill_tran_uno int,
 prebill_num int,
 matter_number int,
@@ -3594,6 +3633,15 @@ std_amt decimal(25,10) null
                       precision="25"
                       scale="10"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
+                      name="billgrp_uno"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3697,6 +3745,10 @@ std_amt decimal(25,10) null
                       name="std_amt"
                       precision="25"
                       scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
+                      dataType="i4"
+                      name="billgrp_uno" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3704,6 +3756,11 @@ std_amt decimal(25,10) null
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_uno]"
+                      dataType="i4"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_uno]"
+                      name="billgrp_uno" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       dataType="i4"
@@ -5052,37 +5109,35 @@ std_amt decimal(25,10) null
     design-time-name="Package\load adr_rpt fees_summary">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\load adr_rpt fees_summary\OLE DB Source"
-          TopLeft="215,202" />
+          TopLeft="216,202" />
         <NodeLayout
           Size="173,42"
           Id="Package\load adr_rpt fees_summary\OLE DB Destination"
           TopLeft="638,204" />
         <EdgeLayout
           Id="Package\load adr_rpt fees_summary.Paths[OLE DB Source Output]"
-          TopLeft="367,224">
+          TopLeft="368,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="271,0"
+              EndConnector="270,0"
               Start="0,0"
-              End="263.5,0">
+              End="262.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="263.5,0" />
+                    End="262.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5179,7 +5234,7 @@ std_amt decimal(25,10) null
     design-time-name="Package\load staging aged_ar">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,42"
           Id="Package\load staging aged_ar\OLE DB Source"
@@ -5207,7 +5262,9 @@ std_amt decimal(25,10) null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5238,7 +5295,7 @@ std_amt decimal(25,10) null
     design-time-name="Package\Load staging fees_summary">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Load staging fees_summary\OLE DB Source"
@@ -5266,9 +5323,7 @@ std_amt decimal(25,10) null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

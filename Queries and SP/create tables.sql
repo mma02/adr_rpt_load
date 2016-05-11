@@ -113,6 +113,7 @@ GO
 --drop table bill_group_detail
 create table bill_group_detail (
 bill_group_code char(10), --PRIMARY KEY,
+bill_grp_uno int,
 client_code char(10), --FOREIGN KEY REFERENCES client_detail(client_code),
 --matter_number int null,
 bill_group_desc varchar(80) null,
@@ -138,6 +139,15 @@ IF EXISTS (SELECT name FROM sys.indexes
 GO
 CREATE NONCLUSTERED INDEX IX_BillGroupDetail_bill_grp_code 
     on bill_group_detail (bill_group_code)
+	--ON Purchasing.ProductVendor (BusinessEntityID); 
+GO
+
+IF EXISTS (SELECT name FROM sys.indexes
+            WHERE name = N'IX_BillGroupDetail_bill_grp_uno') 
+    DROP INDEX IX_BillGroupDetail_bill_grp_uno ON bill_grp_uno; 
+GO
+CREATE NONCLUSTERED INDEX IX_BillGroupDetail_bill_grp_uno 
+    on bill_group_detail (bill_grp_uno)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
 
@@ -217,6 +227,7 @@ GO
 --drop table fees_summary
 create table fees_summary (
 fees_summary_id int identity(1,1) PRIMARY KEY,
+bill_grp_uno int,
 bill_tran_uno int,
 prebill_num int, --FOREIGN KEY REFERENCES prebill_detail(prebill_num),
 matter_number int, --FOREIGN KEY REFERENCES matter_detail(matter_number),
@@ -279,6 +290,15 @@ IF EXISTS (SELECT name FROM sys.indexes
 GO
 CREATE NONCLUSTERED INDEX IX_FeesSummary_fees_summary_id 
     on fees_summary (fees_summary_id)
+	--ON Purchasing.ProductVendor (BusinessEntityID); 
+GO
+
+IF EXISTS (SELECT name FROM sys.indexes
+            WHERE name = N'IX_FeesSummary_bill_grp_uno') 
+    DROP INDEX IX_FeesSummary_bill_grp_uno ON bill_grp_uno; 
+GO
+CREATE NONCLUSTERED INDEX IX_FeesSummary_bill_grp_uno 
+    on fees_summary (bill_grp_uno)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
 

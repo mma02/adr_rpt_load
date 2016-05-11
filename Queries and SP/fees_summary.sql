@@ -8,9 +8,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
---exec [BI_fees_summary]
+--exec [BI_load_fees_summary]
 
-alter procedure [dbo].[BI_fees_summary]
+alter procedure [dbo].[BI_load_fees_summary]
 as
 
 --when we creat the ssis package we will need to delete records
@@ -27,7 +27,7 @@ group by bill_tran_uno) u1 on u1.bill_tran_uno = b.bill_tran_uno and u1.tran_dat
 where b.tran_type = 'BLX'
 
 
-select b.bill_tran_uno, p.prebill_num,m.matter_number, bg.billgrp_code, sum(base_hrs), sum(tobill_hrs)
+select bg.billgrp_uno,b.bill_tran_uno, p.prebill_num,m.matter_number, bg.billgrp_code, sum(base_hrs), sum(tobill_hrs)
 , min(case when tran_type in ('BL') then b.tran_date else null end)
 , sum(case when tran_type in ('BL', 'BLX') then fees_amt*sign else null end)
 , sum(case when tran_type in ('BL', 'BLX') then hard_amt*sign else null end)
@@ -51,7 +51,7 @@ left join _tbm_climat_pd md on m.matter_uno = md.matter_uno
 left join _tbm_climat_pd cd on c.client_uno = cd.client_uno
 where b.tran_date >= '1/1/2015' --and '2/2/2015'
 and b.bill_tran_uno not in (select bill_tran_uno from @bill_trans_to_exclude)
-group by b.bill_tran_uno, m.matter_number, isnull(md.pd_pcnt, cd.pd_pcnt), p.prebill_num, bg.billgrp_code
+group by b.bill_tran_uno, m.matter_number, isnull(md.pd_pcnt, cd.pd_pcnt), p.prebill_num, bg.billgrp_code, bg.billgrp_uno
 
 
 
