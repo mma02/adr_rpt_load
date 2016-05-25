@@ -98,9 +98,13 @@ rank varchar(80) null,
 rate_set_code char(10) null,
 rate_set_description varchar(80) null,
 rateset_attachment_start_date datetime null,
+rateset_attachment_start_date_key int null,
 rateset_attachment_end_date datetime null,
+rateset_attachment_end_date_key int null,
 override_start_date datetime null,
+override_start_date_key int null,
 override_end_date datetime null,
+override_end_date_key int null,
 override_rate decimal(25,10) null)
 
 IF EXISTS (SELECT name FROM sys.indexes
