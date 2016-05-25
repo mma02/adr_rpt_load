@@ -29,6 +29,7 @@ where b.tran_type = 'BLX'
 
 select bg.billgrp_uno,b.bill_tran_uno, p.prebill_num,m.matter_number, bg.billgrp_code, sum(base_hrs), sum(tobill_hrs)
 , min(case when tran_type in ('BL') then b.tran_date else null end)
+, min(case when tran_type in ('BL') then CONVERT (char(8),b.tran_date,112) else null end)
 , sum(case when tran_type in ('BL', 'BLX') then fees_amt*sign else null end)
 , sum(case when tran_type in ('BL', 'BLX') then hard_amt*sign else null end)
 , sum(case when tran_type in ('BL', 'BLX') then soft_amt*sign else null end)

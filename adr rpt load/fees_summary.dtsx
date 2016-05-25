@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fees_summary"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{E2716788-36E4-4EB7-8818-840473FA4DD6}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{F1E9E25A-0816-4409-8F2D-33B98BE96F77}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1281,6 +1281,12 @@
                       cachedName="bill_grp_uno"
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]" />
+                    <inputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date_key]"
+                      cachedDataType="i4"
+                      cachedName="bill_date_key"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1392,6 +1398,10 @@
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
                       name="bill_grp_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
+                      dataType="i4"
+                      name="bill_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1694,6 +1704,15 @@
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
                       name="bill_grp_uno"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
+                      name="bill_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1805,6 +1824,10 @@
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
                       name="bill_grp_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
+                      dataType="i4"
+                      name="bill_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1859,6 +1882,11 @@
                       dataType="dbTimeStamp"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
                       name="bill_date" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date_key]"
+                      name="bill_date_key" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_billed_amt]"
                       dataType="numeric"
@@ -3213,6 +3241,12 @@
                       cachedName="billgrp_uno"
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]" />
+                    <inputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date_key]"
+                      cachedDataType="i4"
+                      cachedName="bill_date_key"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3324,6 +3358,10 @@
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
                       name="bill_grp_uno" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
+                      dataType="i4"
+                      name="bill_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3389,6 +3427,7 @@ billgrp_code char(10) null,
 base_hrs money null,
 tobill_hrs money null,
 bill_date datetime null,
+bill_date_key int null,
 fees_billed_amt decimal(25,10) null,
 hard_billed_amt decimal(25,10) null,
 soft_billed_amt decimal(25,10) null,
@@ -3642,6 +3681,15 @@ std_amt decimal(25,10) null
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
                       name="billgrp_uno"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
+                      name="bill_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3749,6 +3797,10 @@ std_amt decimal(25,10) null
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
                       dataType="i4"
                       name="billgrp_uno" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
+                      dataType="i4"
+                      name="bill_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3798,6 +3850,11 @@ std_amt decimal(25,10) null
                       dataType="dbTimeStamp"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
                       name="bill_date" />
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date_key]"
+                      dataType="i4"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date_key]"
+                      name="bill_date_key" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_billed_amt]"
                       dataType="numeric"

@@ -56,7 +56,9 @@ billing_coordinator_name varchar(40) null,
 billing_coordinator_code char(6) null,
 external_ebilling_number varchar(50) null,
 open_date datetime null,
+open_date_key int null,
 close_date datetime null,
+close_date_key int null,
 status_desc varchar(80) null,
 default_rate_level_id int,
 default_rate_level varchar(80),
@@ -235,6 +237,7 @@ billgrp_code char(10), --FOREIGN KEY REFERENCES bill_group_detail(bill_group_cod
 base_hrs money null,
 tobill_hrs money null,
 bill_date datetime null,
+bill_date_key int null,
 fees_billed_amt decimal(25,10) null,
 hard_billed_amt decimal(25,10) null,
 soft_billed_amt decimal(25,10) null,
@@ -357,6 +360,7 @@ bill_tran_uno int,
 matter_number int, --FOREIGN KEY REFERENCES matter_detail(matter_number),
 write_off_tran_uno int,
 write_off_date datetime null,
+write_off_date_key int,
 write_off_fees_amt decimal(25,10) null,
 write_off_hard_amt decimal(25,10) null,
 write_off_soft_amt decimal(25,10) null,
@@ -555,3 +559,47 @@ CREATE CLUSTERED INDEX IX_DisbursmentDetail_tran_date
     on disbursment_detail (tran_date)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
+
+drop table matter_config_errors
+create table matter_config_errors (
+matter_number int,
+rateset_client_code_mismatch int,
+_2varFees int,
+_2varFeesDiffRates int,
+var_std_mismatch int,
+matter_rateset_overrides int,
+inactive_ratesets_to_matter int)
+
+--IF EXISTS (SELECT name FROM sys.indexes
+--            WHERE name = N'IX_matter_config_errors_Matter_number') 
+--    DROP INDEX IX_matter_config_errors_Matter_number ON matter_number; 
+--GO
+--CREATE CLUSTERED INDEX IX_matter_config_errors_Matter_number 
+--    on disbursment_detail (tran_date)
+--	--ON Purchasing.ProductVendor (BusinessEntityID); 
+--GO
+
+select matter_number, count(*)
+from matter_detail
+group by matter_number 
+having count(*) >1
+
+
+truncate table matter_config_errors
+
+
+select e.matter_number
+from matter_config_errors e
+full join matter_detail m on m.matter_number = e.matter_number
+where m.matter_number is null
+
+select * from matter_detail where matter_number = 401555
+
+select * from matter_config_errors where matter_number = 401555
+
+select * from client_detail where client_code = '133312'
+
+select *
+from matter_detail m
+join client_detail c on c.client_code = m.client_code
+where c.client_code = '133312'

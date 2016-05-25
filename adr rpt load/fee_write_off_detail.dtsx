@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="4/8/2016 10:58:01 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fee_write_off_detail"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{C9C3C116-58BF-4A6C-AD35-57EB79904BDE}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{D5BF36CA-E6C4-40E0-A274-F2B8E45D8121}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -195,6 +195,12 @@
                       cachedName="write_off_type"
                       externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
                       lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_date_key]"
+                      cachedDataType="i4"
+                      cachedName="write_off_date_key"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date_key]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -242,6 +248,10 @@
                       refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_tran_uno]"
                       dataType="i4"
                       name="write_off_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date_key]"
+                      dataType="i4"
+                      name="write_off_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -420,6 +430,15 @@
                       lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_tran_uno]"
                       name="write_off_tran_uno"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date_key]"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_date_key]"
+                      name="write_off_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -467,6 +486,10 @@
                       refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_tran_uno]"
                       dataType="i4"
                       name="write_off_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_date_key]"
+                      dataType="i4"
+                      name="write_off_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -499,6 +522,11 @@
                       dataType="dbTimeStamp"
                       lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
                       name="write_off_date" />
+                    <outputColumn
+                      refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date_key]"
+                      name="write_off_date_key" />
                     <outputColumn
                       refId="Package\load write offs detail (adr_rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
                       dataType="numeric"
@@ -690,6 +718,12 @@
                       cachedName="write_off_type"
                       externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_type]"
                       lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]" />
+                    <inputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_key_date]"
+                      cachedDataType="i4"
+                      cachedName="write_off_key_date"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date_key]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_key_date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -737,6 +771,10 @@
                       refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_tran_uno]"
                       dataType="i4"
                       name="write_off_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_date_key]"
+                      dataType="i4"
+                      name="write_off_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -798,6 +836,7 @@ bill_tran_uno int,
 matter_number int,
 write_off_tran_number int,
 write_off_date datetime null,
+write_off_key_date int,
 write_off_fees_amt decimal(25,10) null,
 write_off_hard_amt decimal(25,10) null,
 write_off_soft_amt decimal(25,10) null,
@@ -919,6 +958,15 @@ write_off_type char(3)
                       lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_type]"
                       name="write_off_type"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_key_date]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_key_date]"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_key_date]"
+                      name="write_off_key_date"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -962,6 +1010,10 @@ write_off_type char(3)
                       dataType="str"
                       length="3"
                       name="write_off_type" />
+                    <externalMetadataColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_key_date]"
+                      dataType="i4"
+                      name="write_off_key_date" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -989,6 +1041,11 @@ write_off_type char(3)
                       dataType="dbTimeStamp"
                       lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_date]"
                       name="write_off_date" />
+                    <outputColumn
+                      refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_key_date]"
+                      dataType="i4"
+                      lineageId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_key_date]"
+                      name="write_off_key_date" />
                     <outputColumn
                       refId="Package\load write offs detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
                       dataType="numeric"
@@ -1046,6 +1103,23 @@ write_off_type char(3)
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\truncate write off detail adr rpt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{02E53551-8EC3-4594-8811-B5917CA504A8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate write off detail adr rpt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1D35854-6693-4AC1-8984-595BB2EABA09}"
+          SQLTask:SqlStatementSource="truncate table fee_write_off_detail" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\truncate write offs detail (staging)"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -1075,10 +1149,18 @@ write_off_type char(3)
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{FA136204-5030-4E80-ADF5-017C2491B322}"
+      DTS:DTSID="{2EF4AB71-A916-4AB4-AA31-1F240CF191E6}"
       DTS:From="Package\load write offs detail (staging)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
+      DTS:To="Package\truncate write off detail adr rpt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{92800536-DBA0-4F31-802C-CA5F96E77A8C}"
+      DTS:From="Package\truncate write off detail adr rpt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
       DTS:To="Package\load write offs detail (adr_rpt)" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -1096,7 +1178,7 @@ write_off_type char(3)
         <NodeLayout
           Size="223,42"
           Id="Package\load write offs detail (adr_rpt)"
-          TopLeft="28,189" />
+          TopLeft="35,244" />
         <NodeLayout
           Size="223,42"
           Id="Package\load write offs detail (staging)"
@@ -1127,20 +1209,46 @@ write_off_type char(3)
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="227,42"
+          Id="Package\truncate write off detail adr rpt"
+          TopLeft="34,170" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="141.25,144.5">
+          TopLeft="145.25,144.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.5"
+              EndConnector="0,25.5"
               Start="0,0"
-              End="0,37">
+              End="0,18">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37" />
+                    End="0,18" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="147,212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1156,7 +1264,7 @@ write_off_type char(3)
     design-time-name="Package\load write offs detail (adr_rpt)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\load write offs detail (adr_rpt)\OLE DB Destination"
@@ -1184,9 +1292,7 @@ write_off_type char(3)
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1222,7 +1328,7 @@ write_off_type char(3)
     design-time-name="Package\load write offs detail (staging)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\load write offs detail (staging)\OLE DB Destination"
@@ -1250,9 +1356,7 @@ write_off_type char(3)
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

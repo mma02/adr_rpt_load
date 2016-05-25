@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="4/6/2016 9:34:00 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="matter_details"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{0CA38C04-DD45-46D6-AB89-9C6F4450BE9C}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{9C06DC5E-EE7D-4294-8FDA-F337665B030B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -321,6 +321,18 @@
                       cachedName="has_matter_override"
                       externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[open_date_key]"
+                      cachedDataType="i4"
+                      cachedName="open_date_key"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date_key]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[close_date_key]"
+                      cachedDataType="i4"
+                      cachedName="close_date_key"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -444,6 +456,14 @@
                       refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
                       dataType="i4"
                       name="has_matter_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date_key]"
+                      dataType="i4"
+                      name="open_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
+                      dataType="i4"
+                      name="close_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -768,6 +788,24 @@
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
                       name="has_matter_override"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date_key]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]"
+                      name="open_date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
+                      name="close_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -891,6 +929,14 @@
                       refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
                       dataType="i4"
                       name="has_matter_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date_key]"
+                      dataType="i4"
+                      name="open_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
+                      dataType="i4"
+                      name="close_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -979,10 +1025,20 @@
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
                       name="open_date" />
                     <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date_key]"
+                      name="open_date_key" />
+                    <outputColumn
                       refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
                       dataType="dbTimeStamp"
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
                       name="close_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date_key]"
+                      name="close_date_key" />
                     <outputColumn
                       refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
                       codePage="1252"
@@ -1320,6 +1376,18 @@
                       cachedName="has_matter_override"
                       externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[open_date_key]"
+                      cachedDataType="i4"
+                      cachedName="open_date_key"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date_key]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[close_date_key]"
+                      cachedDataType="i4"
+                      cachedName="close_date_key"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1443,6 +1511,14 @@
                       refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_matter_override]"
                       dataType="i4"
                       name="has_matter_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[open_date_key]"
+                      dataType="i4"
+                      name="open_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
+                      dataType="i4"
+                      name="close_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1512,7 +1588,9 @@ WITH RESULT SETS
 	billing_coordinator_code char(6) null,
 	external_ebilling_number varchar(50) null,
 	open_date datetime null,
-	close_date datetime null,
+open_date_key int,
+close_date datetime null,
+close_date_key int,
 	status_desc varchar(80) null,
 	default_rate_level_id int,
 	default_rate_level varchar(80),
@@ -1795,6 +1873,24 @@ WITH RESULT SETS
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[has_matter_override]"
                       name="has_matter_override"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date_key]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[open_date_key]"
+                      name="open_date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
+                      name="close_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1918,6 +2014,14 @@ WITH RESULT SETS
                       refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[has_matter_override]"
                       dataType="i4"
                       name="has_matter_override" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[open_date_key]"
+                      dataType="i4"
+                      name="open_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
+                      dataType="i4"
+                      name="close_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2006,10 +2110,20 @@ WITH RESULT SETS
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
                       name="open_date" />
                     <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date_key]"
+                      name="open_date_key" />
+                    <outputColumn
                       refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
                       dataType="dbTimeStamp"
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date]"
                       name="close_date" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[close_date_key]"
+                      name="close_date_key" />
                     <outputColumn
                       refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[status_desc]"
                       codePage="1252"
@@ -2258,7 +2372,7 @@ WITH RESULT SETS
     design-time-name="Package\load matter detail (adr rpt)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\load matter detail (adr rpt)\OLE DB Source"
@@ -2286,9 +2400,7 @@ WITH RESULT SETS
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2324,7 +2436,7 @@ WITH RESULT SETS
     design-time-name="Package\load matter detail (staging)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\load matter detail (staging)\OLE DB Source"
@@ -2352,9 +2464,7 @@ WITH RESULT SETS
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

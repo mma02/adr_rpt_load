@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/23/2016 2:54:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BAWS-MMA02"
+  DTS:CreatorName="VENABLE\mma02"
+  DTS:DTSID="{6E80C972-2596-4A17-A390-1B6728B23068}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="matter_config_errors"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{9134F622-E99D-4086-854C-FDB7687CA1EB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{41554C22-EB78-45B7-9B10-0977D6F0CB1A}"
+      DTS:ObjectName="lvbasql1.ADR_TRAIN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{77929377-3344-49E9-B214-2977DE913E9D}"
+      DTS:ObjectName="lvbbi-ssas01.adr_rpt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_rpt;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{98E60E85-A0E3-45B8-8950-7E3FB7156824}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load matter config errors adr rpt"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5AD8AD03-EFF1-49EC-AD1E-134D7EDCA79A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load matter config errors adr rpt"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load matter config errors adr rpt\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_config_errors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter config errors adr rpt\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rateset_client_code_mismatch]"
+                      cachedDataType="i4"
+                      cachedName="rateset_client_code_mismatch"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_client_code_mismatch]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_2varFees]"
+                      cachedDataType="i4"
+                      cachedName="_2varFees"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFees]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_2varFeesDiffRates]"
+                      cachedDataType="i4"
+                      cachedName="_2varFeesDiffRates"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFeesDiffRates]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[var_std_mismatch]"
+                      cachedDataType="i4"
+                      cachedName="var_std_mismatch"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[var_std_mismatch]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_rateset_overrides]"
+                      cachedDataType="i4"
+                      cachedName="matter_rateset_overrides"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_rateset_overrides]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]" />
+                    <inputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inactive_ratesets_to_matter]"
+                      cachedDataType="i4"
+                      cachedName="inactive_ratesets_to_matter"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[inactive_ratesets_to_matter]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      name="rateset_client_code_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFees]"
+                      dataType="i4"
+                      name="_2varFees" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      name="_2varFeesDiffRates" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[var_std_mismatch]"
+                      dataType="i4"
+                      name="var_std_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_rateset_overrides]"
+                      dataType="i4"
+                      name="matter_rateset_overrides" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      name="inactive_ratesets_to_matter" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load matter config errors adr rpt\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load matter config errors adr rpt\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_config_errors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter config errors adr rpt\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_client_code_mismatch]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]"
+                      name="rateset_client_code_mismatch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFees]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]"
+                      name="_2varFees"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFeesDiffRates]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]"
+                      name="_2varFeesDiffRates"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[var_std_mismatch]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]"
+                      name="var_std_mismatch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_rateset_overrides]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]"
+                      name="matter_rateset_overrides"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[inactive_ratesets_to_matter]"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]"
+                      name="inactive_ratesets_to_matter"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      name="rateset_client_code_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFees]"
+                      dataType="i4"
+                      name="_2varFees" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      name="_2varFeesDiffRates" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[var_std_mismatch]"
+                      dataType="i4"
+                      name="var_std_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_rateset_overrides]"
+                      dataType="i4"
+                      name="matter_rateset_overrides" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      name="inactive_ratesets_to_matter" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_client_code_mismatch]"
+                      name="rateset_client_code_mismatch" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFees]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFees]"
+                      name="_2varFees" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFeesDiffRates]"
+                      name="_2varFeesDiffRates" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[var_std_mismatch]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[var_std_mismatch]"
+                      name="var_std_mismatch" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_rateset_overrides]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_rateset_overrides]"
+                      name="matter_rateset_overrides" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[inactive_ratesets_to_matter]"
+                      name="inactive_ratesets_to_matter" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load matter config errors adr rpt.Paths[OLE DB Source Output]"
+              endId="Package\load matter config errors adr rpt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load matter config errors adr rpt\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load matter config errors staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2729320C-4D32-4E28-9EE8-C2F6BBA27FC6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load matter config errors staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load matter config errors staging\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[matter_config_errors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter config errors staging\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_number]"
+                      cachedDataType="i4"
+                      cachedName="matter_number"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rateset_client_code_mismatch]"
+                      cachedDataType="i4"
+                      cachedName="rateset_client_code_mismatch"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_client_code_mismatch]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_2varFees]"
+                      cachedDataType="i4"
+                      cachedName="_2varFees"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFees]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_2varFeesDiffRates]"
+                      cachedDataType="i4"
+                      cachedName="_2varFeesDiffRates"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFeesDiffRates]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[var_std_mismatch]"
+                      cachedDataType="i4"
+                      cachedName="var_std_mismatch"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[var_std_mismatch]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[matter_rateset_overrides]"
+                      cachedDataType="i4"
+                      cachedName="matter_rateset_overrides"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_rateset_overrides]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]" />
+                    <inputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[inactive_ratesets_to_matter]"
+                      cachedDataType="i4"
+                      cachedName="inactive_ratesets_to_matter"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[inactive_ratesets_to_matter]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      name="rateset_client_code_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFees]"
+                      dataType="i4"
+                      name="_2varFees" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      name="_2varFeesDiffRates" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[var_std_mismatch]"
+                      dataType="i4"
+                      name="var_std_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[matter_rateset_overrides]"
+                      dataType="i4"
+                      name="matter_rateset_overrides" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      name="inactive_ratesets_to_matter" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load matter config errors staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load matter config errors staging\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_matter_config_error_flags]
+WITH RESULT SETS   
+(
+  (
+matter_number int,
+rateset_client_code_mismatch int,
+_2varFees int,
+_2varFeesDiffRates int,
+var_std_mismatch int,
+matter_rateset_overrides int,
+inactive_ratesets_to_matter int
+  )
+);</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load matter config errors staging\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbasql1.ADR_TRAIN]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_number]"
+                      name="matter_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_client_code_mismatch]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_client_code_mismatch]"
+                      name="rateset_client_code_mismatch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFees]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFees]"
+                      name="_2varFees"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFeesDiffRates]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[_2varFeesDiffRates]"
+                      name="_2varFeesDiffRates"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[var_std_mismatch]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[var_std_mismatch]"
+                      name="var_std_mismatch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_rateset_overrides]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[matter_rateset_overrides]"
+                      name="matter_rateset_overrides"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[inactive_ratesets_to_matter]"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[inactive_ratesets_to_matter]"
+                      name="inactive_ratesets_to_matter"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_number]"
+                      dataType="i4"
+                      name="matter_number" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      name="rateset_client_code_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFees]"
+                      dataType="i4"
+                      name="_2varFees" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      name="_2varFeesDiffRates" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[var_std_mismatch]"
+                      dataType="i4"
+                      name="var_std_mismatch" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[matter_rateset_overrides]"
+                      dataType="i4"
+                      name="matter_rateset_overrides" />
+                    <externalMetadataColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      name="inactive_ratesets_to_matter" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_number]"
+                      name="matter_number" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_client_code_mismatch]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_client_code_mismatch]"
+                      name="rateset_client_code_mismatch" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFees]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFees]"
+                      name="_2varFees" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFeesDiffRates]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_2varFeesDiffRates]"
+                      name="_2varFeesDiffRates" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[var_std_mismatch]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[var_std_mismatch]"
+                      name="var_std_mismatch" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_rateset_overrides]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[matter_rateset_overrides]"
+                      name="matter_rateset_overrides" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[inactive_ratesets_to_matter]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[inactive_ratesets_to_matter]"
+                      name="inactive_ratesets_to_matter" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load matter config errors staging.Paths[OLE DB Source Output]"
+              endId="Package\load matter config errors staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load matter config errors staging\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate matter config errors adr rpt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3F7BD7C3-F9F7-454A-9EBE-A1C5A4A76504}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate matter config errors adr rpt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{77929377-3344-49E9-B214-2977DE913E9D}"
+          SQLTask:SqlStatementSource="truncate table matter_config_errors" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate matter config errors staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{332672EB-4AC9-44B0-8EDE-2A39180A6446}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate matter config errors staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{98E60E85-A0E3-45B8-8950-7E3FB7156824}"
+          SQLTask:SqlStatementSource="truncate table matter_config_errors" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9FCD37A-D951-4DB0-AB56-37E697ADD309}"
+      DTS:From="Package\truncate matter config errors staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\load matter config errors staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D636A852-2CC4-4558-BD98-D20AB3D5CDF3}"
+      DTS:From="Package\load matter config errors staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\truncate matter config errors adr rpt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B37E7E5C-4800-4F06-A94B-AF6F466B8869}"
+      DTS:From="Package\truncate matter config errors adr rpt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\load matter config errors adr rpt" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="235,42"
+          Id="Package\load matter config errors staging"
+          TopLeft="66,119" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\truncate matter config errors adr rpt"
+          TopLeft="54,201" />
+        <NodeLayout
+          Size="255,42"
+          Id="Package\truncate matter config errors staging"
+          TopLeft="60,19" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="185.5,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="182,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="233,42"
+          Id="Package\load matter config errors adr rpt"
+          TopLeft="57,299" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="177,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load matter config errors staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load matter config errors staging\OLE DB Source"
+          TopLeft="175,164" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load matter config errors staging\OLE DB Destination"
+          TopLeft="533,166" />
+        <EdgeLayout
+          Id="Package\load matter config errors staging.Paths[OLE DB Source Output]"
+          TopLeft="327,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="206,0"
+              Start="0,0"
+              End="198.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="198.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter config errors staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter config errors staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load matter config errors adr rpt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load matter config errors adr rpt\OLE DB Destination"
+          TopLeft="480,180" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load matter config errors adr rpt\OLE DB Source"
+          TopLeft="142,180" />
+        <EdgeLayout
+          Id="Package\load matter config errors adr rpt.Paths[OLE DB Source Output]"
+          TopLeft="294,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186,0"
+              Start="0,0"
+              End="178.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="178.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter config errors adr rpt\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load matter config errors adr rpt\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

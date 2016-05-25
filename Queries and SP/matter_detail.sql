@@ -39,7 +39,7 @@ GO
 --);
 
 
-create procedure [dbo].[BI_load_matter_details]
+alter procedure [dbo].[BI_load_matter_details]
 as
 
 
@@ -80,7 +80,12 @@ where t1.matter_uno	not in (select matter_uno from #variable)
 
 
 select c.client_code, m.matter_number, m.matter_name, m.long_matt_name, ba.employee_name, ba.employee_code, ra.employee_name, ra.employee_code 
-, bc.employee_name, bc.employee_code, tm._ebill_internal_matter_no, m.open_date, m.close_date, s.status_desc
+, bc.employee_name, bc.employee_code, tm._ebill_internal_matter_no
+, m.open_date
+, CONVERT (char(8),m.open_date,112)
+, m.close_date
+, isnull(CONVERT (char(8),m.close_date,112), 1)
+, s.status_desc
 , tm.rate_level, r.description, tm.prev_rate_level, pr.description, v.new_id, v.new_name, v.eff_date
 , has_rateset_override = case when isnull(rs.rate_set_uno,0)>0 then 1 else 0 end 
 , has_matter_override = case when isnull(mo.matter_uno,0)>0 then 1 else 0 end
@@ -89,7 +94,7 @@ join hbm_client c on c.client_uno = m.client_uno
 join hbm_persnl ba on ba.empl_uno = m.bill_empl_uno
 join hbm_persnl ra on ra.empl_uno = m.resp_empl_uno
 join tbm_persnl bct on bct.empl_uno = m.bill_empl_uno
-join hbm_persnl bc on bc.empl_uno = bct.empl_uno
+join hbm_persnl bc on bc.empl_uno = bct.assist_empl_uno
 join tbm_matter tm on m.matter_uno = tm.matter_uno
 join HBL_STATUS_MATT s on s.status_code = m.status_code
 join TBL_LEVEL_FEE r on r.rate_level = tm.rate_level
@@ -106,3 +111,14 @@ drop table #temp
 drop table #variable
 
 GO
+
+--declare @startDate datetime = null
+--declare @EndDate datetime = null
+--declare @empl int = null
+--declare @client_code char(10) = null
+--declare @matter_number int = 207816
+--declare @empl_assistant varchar(6) = null
+
+
+
+

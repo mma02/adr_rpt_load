@@ -12,7 +12,7 @@ GO
 --exec [BI_load_fee_write_off_detail]
 
 
-create procedure [dbo].[BI_load_fee_write_off_detail]
+alter procedure [dbo].[BI_load_fee_write_off_detail]
 
 
 as
@@ -33,7 +33,9 @@ group by bill_tran_uno) u1 on u1.bill_tran_uno = b.bill_tran_uno and u1.tran_dat
 where b.tran_type = 'BLX'
 
 
-select b.bill_tran_uno, m.matter_number, b.source_tran_uno, b.tran_date
+select b.bill_tran_uno, m.matter_number, b.source_tran_uno
+, b.tran_date
+, CONVERT (char(8),b.tran_date,112)
 , sum(b.fees_amt*sign*-1)
 , sum(b.hard_amt*sign*-1)
 , sum(b.soft_amt*sign*-1)
