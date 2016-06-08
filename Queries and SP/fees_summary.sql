@@ -27,23 +27,23 @@ group by bill_tran_uno) u1 on u1.bill_tran_uno = b.bill_tran_uno and u1.tran_dat
 where b.tran_type = 'BLX'
 
 
-select bg.billgrp_uno,b.bill_tran_uno, p.prebill_num,m.matter_number, bg.billgrp_code, sum(base_hrs), sum(tobill_hrs)
+select bg.billgrp_uno,b.bill_tran_uno, p.prebill_num,m.matter_number, bg.billgrp_code--, sum(base_hrs), sum(tobill_hrs)
 , min(case when tran_type in ('BL') then b.tran_date else null end)
 , min(case when tran_type in ('BL') then CONVERT (char(8),b.tran_date,112) else null end)
 , sum(case when tran_type in ('BL', 'BLX') then fees_amt*sign else null end)
 , sum(case when tran_type in ('BL', 'BLX') then hard_amt*sign else null end)
 , sum(case when tran_type in ('BL', 'BLX') then soft_amt*sign else null end)
-, sum(case when tran_type in ('WO', 'WOX') then fees_amt*sign*-1 else null end)
-, sum(case when tran_type in ('WO', 'WOX') then hard_amt*sign*-1 else null end)
-, sum(case when tran_type in ('WO', 'WOX') then soft_amt*sign*-1 else null end)
-, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then fees_amt*sign*-1 else null end)
-, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then hard_amt*sign*-1 else null end)
-, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then soft_amt*sign*-1 else null end)
-, isnull(md.pd_pcnt, cd.pd_pcnt), sum(base_amt), sum(std_amt)
+--, sum(case when tran_type in ('WO', 'WOX') then fees_amt*sign*-1 else null end)
+--, sum(case when tran_type in ('WO', 'WOX') then hard_amt*sign*-1 else null end)
+--, sum(case when tran_type in ('WO', 'WOX') then soft_amt*sign*-1 else null end)
+--, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then fees_amt*sign*-1 else null end)
+--, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then hard_amt*sign*-1 else null end)
+--, sum(case when tran_type in ('CR', 'CRX', 'RA', 'RAX') then soft_amt*sign*-1 else null end)
+, isnull(md.pd_pcnt, cd.pd_pcnt)--, sum(base_amt), sum(std_amt)
 from BLT_BILL_AMT b
-left join (select bill_tran_uno, matter_uno,sum(base_hrs) base_hrs, sum(tobill_hrs) tobill_hrs, sum(base_amt) base_amt, sum(std_amt) std_amt
-from tat_time_bil 
-group by bill_tran_uno, matter_uno) t on t.bill_tran_uno = b.bill_tran_uno and t.bill_tran_uno = b.source_tran_uno and t.matter_uno = b.matter_uno	
+--left join (select bill_tran_uno, matter_uno,sum(base_hrs) base_hrs, sum(tobill_hrs) tobill_hrs, sum(base_amt) base_amt, sum(std_amt) std_amt
+--from tat_time_bil 
+--group by bill_tran_uno, matter_uno) t on t.bill_tran_uno = b.bill_tran_uno and t.bill_tran_uno = b.source_tran_uno and t.matter_uno = b.matter_uno	
 join blt_bill p on p.tran_uno = b.bill_tran_uno 
 join tbm_billgrp bg on p.billgrp_uno = bg.billgrp_uno
 join hbm_matter m on b.matter_uno = m.matter_uno
@@ -57,3 +57,11 @@ group by b.bill_tran_uno, m.matter_number, isnull(md.pd_pcnt, cd.pd_pcnt), p.pre
 
 
 go
+
+
+--select top 10000 * from BLT_BILL_AMT where tran_type in ('BLX') and bill_tran_uno=source_tran_uno
+
+
+--select * from BLT_BILL_AMT where source_tran_uno = 3839311
+
+--select * from BLT_BILL_AMT where bill_tran_uno = 2400311

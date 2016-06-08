@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fees_summary"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{F1E9E25A-0816-4409-8F2D-33B98BE96F77}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{DA883AE3-3EC5-4D15-8E68-62BC67C347F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,16 +24,6 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=lvbasql1;Initial Catalog=ADR_TRAIN;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.adr_fact]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{C6F89033-4825-438B-8B1A-217B6921F7C5}"
-      DTS:ObjectName="lvbbi-ssas01.adr_fact">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=adr_fact;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -56,393 +46,19 @@
           DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{22573A6B-9EBF-4BA9-9FBE-C3DD70BD4944}"
+      DTS:ObjectName="lvbbi-ssas01.BI_staging 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=lvbbi-ssas01;Initial Catalog=BI_staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\load adr_rpt aged_ar"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{2B3FAF53-4C8B-4374-B6B2-9D5F8CF55089}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="load adr_rpt aged_ar"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\load adr_rpt aged_ar\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[aged_ar]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\load adr_rpt aged_ar\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
-                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_summary_id]"
-                      cachedDataType="i4"
-                      cachedName="fees_summary_id"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_30]"
-                      cachedDataType="i4"
-                      cachedName="aged_fees_billed_30"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_60]"
-                      cachedDataType="i4"
-                      cachedName="aged_fees_billed_60"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_180]"
-                      cachedDataType="i4"
-                      cachedName="aged_fees_billed_180"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_360]"
-                      cachedDataType="i4"
-                      cachedName="aged_fees_billed_360"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_720]"
-                      cachedDataType="i4"
-                      cachedName="aged_fees_billed_720"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
-                      dataType="i4"
-                      name="fees_summary_id" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
-                      dataType="i4"
-                      name="aged_fees_billed_30" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
-                      dataType="i4"
-                      name="aged_fees_billed_60" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
-                      dataType="i4"
-                      name="aged_fees_billed_180" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
-                      dataType="i4"
-                      name="aged_fees_billed_360" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
-                      dataType="i4"
-                      name="aged_fees_billed_720" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\load adr_rpt aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\load adr_rpt aged_ar\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[aged_ar]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\load adr_rpt aged_ar\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
-                      name="fees_summary_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
-                      name="aged_fees_billed_30"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
-                      name="aged_fees_billed_60"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
-                      name="aged_fees_billed_180"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
-                      name="aged_fees_billed_360"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
-                      name="aged_fees_billed_720"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
-                      dataType="i4"
-                      name="fees_summary_id" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
-                      dataType="i4"
-                      name="aged_fees_billed_30" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
-                      dataType="i4"
-                      name="aged_fees_billed_60" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
-                      dataType="i4"
-                      name="aged_fees_billed_180" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
-                      dataType="i4"
-                      name="aged_fees_billed_360" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
-                      dataType="i4"
-                      name="aged_fees_billed_720" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
-                      name="fees_summary_id" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
-                      name="aged_fees_billed_30" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
-                      name="aged_fees_billed_60" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
-                      name="aged_fees_billed_180" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
-                      name="aged_fees_billed_360" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
-                      name="aged_fees_billed_720" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\load adr_rpt aged_ar.Paths[OLE DB Source Output]"
-              endId="Package\load adr_rpt aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\load adr_rpt aged_ar\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\load adr_rpt apportioned_pct"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1164,18 +780,6 @@
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]" />
                     <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_hrs]"
-                      cachedDataType="cy"
-                      cachedName="base_hrs"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hrs]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tobill_hrs]"
-                      cachedDataType="cy"
-                      cachedName="tobill_hrs"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]" />
-                    <inputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="bill_date"
@@ -1206,75 +810,11 @@
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[soft_billed_amt]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[soft_billed_amt]" />
                     <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_fees_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_fees_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_hard_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_hard_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_soft_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_soft_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_fees_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_fees_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_fees_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_hard_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_hard_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_hard_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_soft_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_soft_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_soft_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]" />
-                    <inputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[discount_level]"
                       cachedDataType="r8"
                       cachedName="discount_level"
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_level]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_amt]"
-                      cachedDataType="numeric"
-                      cachedName="base_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]" />
-                    <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[std_amt]"
-                      cachedDataType="numeric"
-                      cachedName="std_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
                     <inputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_grp_uno]"
                       cachedDataType="i4"
@@ -1313,14 +853,6 @@
                       length="10"
                       name="billgrp_code" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hrs]"
-                      dataType="cy"
-                      name="base_hrs" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
-                      dataType="cy"
-                      name="tobill_hrs" />
-                    <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
                       dataType="dbTimeStamp"
                       name="bill_date" />
@@ -1343,57 +875,9 @@
                       precision="25"
                       scale="10" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
-                      dataType="numeric"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
-                      dataType="numeric"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
-                      dataType="numeric"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_fees_amt]"
-                      dataType="numeric"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_hard_amt]"
-                      dataType="numeric"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_soft_amt]"
-                      dataType="numeric"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_level]"
                       dataType="r8"
                       name="discount_level" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
-                      dataType="numeric"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
-                      dataType="numeric"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
@@ -1539,24 +1023,6 @@
                       name="billgrp_code"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
-                      name="base_hrs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
-                      name="tobill_hrs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -1599,72 +1065,6 @@
                       scale="10"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_fees_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_hard_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_soft_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -1672,28 +1072,6 @@
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount_level]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]"
                       name="discount_level"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
-                      name="base_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
-                      name="std_amt"
-                      precision="25"
-                      scale="10"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_grp_uno]"
@@ -1739,14 +1117,6 @@
                       length="10"
                       name="billgrp_code" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
-                      dataType="cy"
-                      name="base_hrs" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
-                      dataType="cy"
-                      name="tobill_hrs" />
-                    <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
                       dataType="dbTimeStamp"
                       name="bill_date" />
@@ -1769,57 +1139,9 @@
                       precision="25"
                       scale="10" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
-                      dataType="numeric"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
-                      dataType="numeric"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
-                      dataType="numeric"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_fees_amt]"
-                      dataType="numeric"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_hard_amt]"
-                      dataType="numeric"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_soft_amt]"
-                      dataType="numeric"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount_level]"
                       dataType="r8"
                       name="discount_level" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
-                      dataType="numeric"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
-                      dataType="numeric"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <externalMetadataColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
@@ -1868,16 +1190,6 @@
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
                       name="billgrp_code" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
-                      dataType="cy"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
-                      name="base_hrs" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
-                      dataType="cy"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
-                      name="tobill_hrs" />
-                    <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
                       dataType="dbTimeStamp"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
@@ -1909,66 +1221,10 @@
                       precision="25"
                       scale="10" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_hard_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_hard_amt]"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_soft_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_soft_amt]"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[discount_level]"
                       dataType="r8"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[discount_level]"
                       name="discount_level" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
-                      dataType="numeric"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1993,6 +1249,874 @@
               endId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load aged ar (adr rpt)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D3D9D587-1C78-4DD2-978D-1AF8EB9687E6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load aged ar (adr rpt)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load aged ar (adr rpt)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_ar]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged ar (adr rpt)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.adr_rpt]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_summary_id]"
+                      cachedDataType="i4"
+                      cachedName="fees_summary_id"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]" />
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_30]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_30"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]" />
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_60]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_60"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]" />
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_180]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_180"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]" />
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_360]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_360"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]" />
+                    <inputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_720]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_720"
+                      cachedPrecision="25"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
+                      dataType="i4"
+                      name="fees_summary_id" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      name="aged_fees_billed_30"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      name="aged_fees_billed_60"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      name="aged_fees_billed_180"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      name="aged_fees_billed_360"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      name="aged_fees_billed_720"
+                      precision="25"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load aged ar (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load aged ar (adr rpt)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_ar]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged ar (adr rpt)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
+                      name="fees_summary_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
+                      name="aged_fees_billed_30"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
+                      name="aged_fees_billed_60"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
+                      name="aged_fees_billed_180"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
+                      name="aged_fees_billed_360"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
+                      name="aged_fees_billed_720"
+                      precision="25"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
+                      dataType="i4"
+                      name="fees_summary_id" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      name="aged_fees_billed_30"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      name="aged_fees_billed_60"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      name="aged_fees_billed_180"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      name="aged_fees_billed_360"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      name="aged_fees_billed_720"
+                      precision="25"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
+                      name="fees_summary_id" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
+                      name="aged_fees_billed_30"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
+                      name="aged_fees_billed_60"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
+                      name="aged_fees_billed_180"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
+                      name="aged_fees_billed_360"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
+                      name="aged_fees_billed_720"
+                      precision="25"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load aged ar (adr rpt).Paths[OLE DB Source Output]"
+              endId="Package\load aged ar (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load aged ar (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\load aged ar (staging)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{e34bbbf5-5982-468e-ad32-502dd942941f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load aged ar (staging)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load aged ar (staging)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[aged_ar]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged ar (staging)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_summary_id]"
+                      cachedDataType="i4"
+                      cachedName="fees_summary_id"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]" />
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_30]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_30"
+                      cachedPrecision="38"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]" />
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_60]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_60"
+                      cachedPrecision="38"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]" />
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_180]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_180"
+                      cachedPrecision="38"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]" />
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_360]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_360"
+                      cachedPrecision="38"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]" />
+                    <inputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_720]"
+                      cachedDataType="numeric"
+                      cachedName="aged_fees_billed_720"
+                      cachedPrecision="38"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
+                      dataType="i4"
+                      name="fees_summary_id" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      name="aged_fees_billed_30"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      name="aged_fees_billed_60"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      name="aged_fees_billed_180"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      name="aged_fees_billed_360"
+                      precision="25"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      name="aged_fees_billed_720"
+                      precision="25"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load aged ar (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (staging)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load aged ar (staging)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_aged_ar] '4/1/2016'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load aged ar (staging)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
+                      name="fees_summary_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
+                      name="aged_fees_billed_30"
+                      precision="38"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
+                      name="aged_fees_billed_60"
+                      precision="38"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
+                      name="aged_fees_billed_180"
+                      precision="38"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
+                      name="aged_fees_billed_360"
+                      precision="38"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
+                      name="aged_fees_billed_720"
+                      precision="38"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
+                      dataType="i4"
+                      name="fees_summary_id" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      name="aged_fees_billed_30"
+                      precision="38"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      name="aged_fees_billed_60"
+                      precision="38"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      name="aged_fees_billed_180"
+                      precision="38"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      name="aged_fees_billed_360"
+                      precision="38"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      name="aged_fees_billed_720"
+                      precision="38"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
+                      name="fees_summary_id" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
+                      name="aged_fees_billed_30"
+                      precision="38"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
+                      name="aged_fees_billed_60"
+                      precision="38"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
+                      name="aged_fees_billed_180"
+                      precision="38"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
+                      name="aged_fees_billed_360"
+                      precision="38"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
+                      dataType="numeric"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
+                      name="aged_fees_billed_720"
+                      precision="38"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load aged ar (staging).Paths[OLE DB Source Output]"
+              endId="Package\load aged ar (staging)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\load aged ar (staging)\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2588,430 +2712,6 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\load staging aged_ar"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{7121138C-D0EB-47B1-A6A1-EED4378B2BB8}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="load staging aged_ar"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\load staging aged_ar\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[aged_ar]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\load staging aged_ar\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fees_summary_id]"
-                      cachedDataType="i4"
-                      cachedName="fees_summary_id"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]" />
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_30]"
-                      cachedDataType="numeric"
-                      cachedName="aged_fees_billed_30"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]" />
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_60]"
-                      cachedDataType="numeric"
-                      cachedName="aged_fees_billed_60"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]" />
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_180]"
-                      cachedDataType="numeric"
-                      cachedName="aged_fees_billed_180"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]" />
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_360]"
-                      cachedDataType="numeric"
-                      cachedName="aged_fees_billed_360"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]" />
-                    <inputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aged_fees_billed_720]"
-                      cachedDataType="numeric"
-                      cachedName="aged_fees_billed_720"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fees_summary_id]"
-                      dataType="i4"
-                      name="fees_summary_id" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_30]"
-                      dataType="i4"
-                      name="aged_fees_billed_30" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_60]"
-                      dataType="i4"
-                      name="aged_fees_billed_60" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_180]"
-                      dataType="i4"
-                      name="aged_fees_billed_180" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_360]"
-                      dataType="i4"
-                      name="aged_fees_billed_360" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aged_fees_billed_720]"
-                      dataType="i4"
-                      name="aged_fees_billed_720" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\load staging aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\load staging aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\load staging aged_ar\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\load staging aged_ar\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec [BI_load_aged_ar] '4/1/2016'</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\load staging aged_ar\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  connectionManagerRefId="Package.ConnectionManagers[lvbbi-ssas01.BI_staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[fees_summary_id]"
-                      name="fees_summary_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_30]"
-                      name="aged_fees_billed_30"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_60]"
-                      name="aged_fees_billed_60"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_180]"
-                      name="aged_fees_billed_180"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_360]"
-                      name="aged_fees_billed_360"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].Columns[aged_fees_billed_720]"
-                      name="aged_fees_billed_720"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fees_summary_id]"
-                      dataType="i4"
-                      name="fees_summary_id" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_30]"
-                      dataType="numeric"
-                      name="aged_fees_billed_30"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_60]"
-                      dataType="numeric"
-                      name="aged_fees_billed_60"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_180]"
-                      dataType="numeric"
-                      name="aged_fees_billed_180"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_360]"
-                      dataType="numeric"
-                      name="aged_fees_billed_360"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aged_fees_billed_720]"
-                      dataType="numeric"
-                      name="aged_fees_billed_720"
-                      precision="25"
-                      scale="10" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
-                      dataType="i4"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fees_summary_id]"
-                      name="fees_summary_id" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
-                      dataType="numeric"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_30]"
-                      name="aged_fees_billed_30"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
-                      dataType="numeric"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_60]"
-                      name="aged_fees_billed_60"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
-                      dataType="numeric"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_180]"
-                      name="aged_fees_billed_180"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
-                      dataType="numeric"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_360]"
-                      name="aged_fees_billed_360"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
-                      dataType="numeric"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aged_fees_billed_720]"
-                      name="aged_fees_billed_720"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\load staging aged_ar.Paths[OLE DB Source Output]"
-              endId="Package\load staging aged_ar\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\load staging aged_ar\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Load staging fees_summary"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -3124,18 +2824,6 @@
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[billgrp_code]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_code]" />
                     <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_hrs]"
-                      cachedDataType="cy"
-                      cachedName="base_hrs"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hrs]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tobill_hrs]"
-                      cachedDataType="cy"
-                      cachedName="tobill_hrs"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]" />
-                    <inputColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="bill_date"
@@ -3166,75 +2854,11 @@
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[soft_billed_amt]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[soft_billed_amt]" />
                     <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_fees_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_fees_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_hard_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_hard_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[write_off_soft_amt]"
-                      cachedDataType="numeric"
-                      cachedName="write_off_soft_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_fees_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_fees_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_fees_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_hard_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_hard_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_hard_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_soft_amt]"
-                      cachedDataType="numeric"
-                      cachedName="reciept_soft_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_soft_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]" />
-                    <inputColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[discount_level]"
                       cachedDataType="r8"
                       cachedName="discount_level"
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_level]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[base_amt]"
-                      cachedDataType="numeric"
-                      cachedName="base_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]" />
-                    <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[std_amt]"
-                      cachedDataType="numeric"
-                      cachedName="std_amt"
-                      cachedPrecision="25"
-                      cachedScale="10"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]" />
                     <inputColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[billgrp_uno]"
                       cachedDataType="i4"
@@ -3273,14 +2897,6 @@
                       length="10"
                       name="billgrp_code" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_hrs]"
-                      dataType="cy"
-                      name="base_hrs" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tobill_hrs]"
-                      dataType="cy"
-                      name="tobill_hrs" />
-                    <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date]"
                       dataType="dbTimeStamp"
                       name="bill_date" />
@@ -3303,57 +2919,9 @@
                       precision="25"
                       scale="10" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_fees_amt]"
-                      dataType="numeric"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_hard_amt]"
-                      dataType="numeric"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[write_off_soft_amt]"
-                      dataType="numeric"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_fees_amt]"
-                      dataType="numeric"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_hard_amt]"
-                      dataType="numeric"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_soft_amt]"
-                      dataType="numeric"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_level]"
                       dataType="r8"
                       name="discount_level" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[base_amt]"
-                      dataType="numeric"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[std_amt]"
-                      dataType="numeric"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_grp_uno]"
                       dataType="i4"
@@ -3424,22 +2992,12 @@ bill_tran_uno int,
 prebill_num int,
 matter_number int,
 billgrp_code char(10) null, 
-base_hrs money null,
-tobill_hrs money null,
 bill_date datetime null,
 bill_date_key int null,
 fees_billed_amt decimal(25,10) null,
 hard_billed_amt decimal(25,10) null,
 soft_billed_amt decimal(25,10) null,
-write_off_fees_amt decimal(25,10) null,
-write_off_hard_amt decimal(25,10) null,
-write_off_soft_amt decimal(25,10) null,
-reciept_fees_amt decimal(25,10) null,
-reciept_hard_amt decimal(25,10) null,
-reciept_soft_amt decimal(25,10) null,
-discount_level float null,
-base_amt decimal(25,10) null,
-std_amt decimal(25,10) null
+discount_level float null
   )
 );</property>
                 <property
@@ -3516,24 +3074,6 @@ std_amt decimal(25,10) null
                       name="billgrp_code"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_hrs]"
-                      name="base_hrs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[tobill_hrs]"
-                      name="tobill_hrs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -3576,72 +3116,6 @@ std_amt decimal(25,10) null
                       scale="10"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_fees_amt]"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_hard_amt]"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[write_off_soft_amt]"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_fees_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_fees_amt]"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_hard_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_hard_amt]"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_soft_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_soft_amt]"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -3649,28 +3123,6 @@ std_amt decimal(25,10) null
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount_level]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[discount_level]"
                       name="discount_level"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[base_amt]"
-                      name="base_amt"
-                      precision="25"
-                      scale="10"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[std_amt]"
-                      name="std_amt"
-                      precision="25"
-                      scale="10"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[billgrp_uno]"
@@ -3712,14 +3164,6 @@ std_amt decimal(25,10) null
                       length="10"
                       name="billgrp_code" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_hrs]"
-                      dataType="cy"
-                      name="base_hrs" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tobill_hrs]"
-                      dataType="cy"
-                      name="tobill_hrs" />
-                    <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date]"
                       dataType="dbTimeStamp"
                       name="bill_date" />
@@ -3742,57 +3186,9 @@ std_amt decimal(25,10) null
                       precision="25"
                       scale="10" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_fees_amt]"
-                      dataType="numeric"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_hard_amt]"
-                      dataType="numeric"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[write_off_soft_amt]"
-                      dataType="numeric"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_fees_amt]"
-                      dataType="numeric"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_hard_amt]"
-                      dataType="numeric"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_soft_amt]"
-                      dataType="numeric"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount_level]"
                       dataType="r8"
                       name="discount_level" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[base_amt]"
-                      dataType="numeric"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[std_amt]"
-                      dataType="numeric"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <externalMetadataColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[billgrp_uno]"
                       dataType="i4"
@@ -3836,16 +3232,6 @@ std_amt decimal(25,10) null
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[billgrp_code]"
                       name="billgrp_code" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
-                      dataType="cy"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_hrs]"
-                      name="base_hrs" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
-                      dataType="cy"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tobill_hrs]"
-                      name="tobill_hrs" />
-                    <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
                       dataType="dbTimeStamp"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_date]"
@@ -3877,66 +3263,10 @@ std_amt decimal(25,10) null
                       precision="25"
                       scale="10" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_fees_amt]"
-                      name="write_off_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_hard_amt]"
-                      name="write_off_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[write_off_soft_amt]"
-                      name="write_off_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
-                      name="reciept_fees_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_hard_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_hard_amt]"
-                      name="reciept_hard_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_soft_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_soft_amt]"
-                      name="reciept_soft_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[discount_level]"
                       dataType="r8"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[discount_level]"
                       name="discount_level" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[base_amt]"
-                      name="base_amt"
-                      precision="25"
-                      scale="10" />
-                    <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
-                      dataType="numeric"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[std_amt]"
-                      name="std_amt"
-                      precision="25"
-                      scale="10" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -4655,11 +3985,11 @@ std_amt decimal(25,10) null
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
-      DTS:DTSID="{9D256332-2EC2-496F-9639-78655336C7BC}"
+      DTS:DTSID="{9D9EAA8A-5EB2-4A9E-B5E3-D41F09BC7CDB}"
       DTS:From="Package\truncate adr_rpt aged_ar"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 10"
-      DTS:To="Package\load adr_rpt aged_ar" />
+      DTS:To="Package\load aged ar (adr rpt)" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -4671,11 +4001,11 @@ std_amt decimal(25,10) null
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{C76A610E-16B3-4113-A456-D62327CAA46C}"
+      DTS:DTSID="{5EE0F9B5-DC9B-41D4-BB0E-B52F0FB8534E}"
       DTS:From="Package\truncate staging aged_ar"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\load staging aged_ar" />
+      DTS:To="Package\load aged ar (staging)" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
@@ -4719,8 +4049,8 @@ std_amt decimal(25,10) null
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
       DTS:CreationName=""
-      DTS:DTSID="{B3779F8B-D6DC-45C9-BD22-37902FC076F4}"
-      DTS:From="Package\load staging aged_ar"
+      DTS:DTSID="{34F141C8-3AE1-4179-9AE3-44CC41D78F42}"
+      DTS:From="Package\load aged ar (staging)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 9"
       DTS:To="Package\truncate adr_rpt aged_ar" />
@@ -4738,10 +4068,6 @@ std_amt decimal(25,10) null
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="180,42"
-          Id="Package\load adr_rpt aged_ar"
-          TopLeft="564,624" />
-        <NodeLayout
           Size="218,42"
           Id="Package\load adr_rpt apportioned_pct"
           TopLeft="344,486" />
@@ -4753,10 +4079,6 @@ std_amt decimal(25,10) null
           Size="229,42"
           Id="Package\Load apportioned_pct (staging)"
           TopLeft="44,486" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\load staging aged_ar"
-          TopLeft="71,627" />
         <NodeLayout
           Size="213,42"
           Id="Package\Load staging fees_summary"
@@ -4830,28 +4152,6 @@ std_amt decimal(25,10) null
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="496,647">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="68,0"
-              Start="0,0"
-              End="60.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="60.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="157.5,528">
           <EdgeLayout.Curve>
@@ -4865,28 +4165,6 @@ std_amt decimal(25,10) null
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="158.75,599">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28"
-              Start="0,0"
-              End="0,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5005,20 +4283,72 @@ std_amt decimal(25,10) null
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="185,42"
+          Id="Package\load aged ar (staging)"
+          TopLeft="58,628" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="251,648.5">
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="153.5,599">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46,0"
+              EndConnector="0,29"
               Start="0,0"
-              End="38.5,0">
+              End="0,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="38.5,0" />
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="243,649">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,0"
+              Start="0,0"
+              End="46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="183,42"
+          Id="Package\load aged ar (adr rpt)"
+          TopLeft="562,629" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="496,649.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5030,72 +4360,6 @@ std_amt decimal(25,10) null
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\load adr_rpt aged_ar">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\load adr_rpt aged_ar\OLE DB Source"
-          TopLeft="178,291" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\load adr_rpt aged_ar\OLE DB Destination"
-          TopLeft="663,294" />
-        <EdgeLayout
-          Id="Package\load adr_rpt aged_ar.Paths[OLE DB Source Output]"
-          TopLeft="330,313.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="333,0"
-              Start="0,0"
-              End="325.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="325.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\load adr_rpt aged_ar\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\load adr_rpt aged_ar\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\load adr_rpt apportioned_pct">
     <LayoutInfo>
@@ -5166,15 +4430,15 @@ std_amt decimal(25,10) null
     design-time-name="Package\load adr_rpt fees_summary">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\load adr_rpt fees_summary\OLE DB Source"
-          TopLeft="216,202" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="173,42"
           Id="Package\load adr_rpt fees_summary\OLE DB Destination"
           TopLeft="638,204" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load adr_rpt fees_summary\OLE DB Source"
+          TopLeft="216,202" />
         <EdgeLayout
           Id="Package\load adr_rpt fees_summary.Paths[OLE DB Source Output]"
           TopLeft="368,224">
@@ -5194,7 +4458,9 @@ std_amt decimal(25,10) null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5288,79 +4554,18 @@ std_amt decimal(25,10) null
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\load staging aged_ar">
+    design-time-name="Package\Load staging fees_summary">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="152,42"
-          Id="Package\load staging aged_ar\OLE DB Source"
-          TopLeft="105,192" />
-        <NodeLayout
           Size="173,42"
-          Id="Package\load staging aged_ar\OLE DB Destination"
-          TopLeft="649,193" />
-        <EdgeLayout
-          Id="Package\load staging aged_ar.Paths[OLE DB Source Output]"
-          TopLeft="257,213.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="392,0"
-              Start="0,0"
-              End="384.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="384.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\load staging aged_ar\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\load staging aged_ar\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Load staging fees_summary">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+          Id="Package\Load staging fees_summary\OLE DB Destination"
+          TopLeft="673,187" />
         <NodeLayout
           Size="152,42"
           Id="Package\Load staging fees_summary\OLE DB Source"
           TopLeft="96,189" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Load staging fees_summary\OLE DB Destination"
-          TopLeft="673,187" />
         <EdgeLayout
           Id="Package\Load staging fees_summary.Paths[OLE DB Source Output]"
           TopLeft="248,209">
@@ -5380,7 +4585,9 @@ std_amt decimal(25,10) null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5465,6 +4672,121 @@ std_amt decimal(25,10) null
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load aged ar (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged ar (staging)\OLE DB Destination"
+          TopLeft="419,104" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged ar (staging)\OLE DB Source"
+          TopLeft="88,101" />
+        <EdgeLayout
+          Id="Package\load aged ar (staging).Paths[OLE DB Source Output]"
+          TopLeft="240,123.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179,0"
+              Start="0,0"
+              End="171.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="171.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (staging)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load aged ar (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged ar (adr rpt)\OLE DB Source"
+          TopLeft="172,206" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged ar (adr rpt)\OLE DB Destination"
+          TopLeft="490,209" />
+        <EdgeLayout
+          Id="Package\load aged ar (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="324,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166,0"
+              Start="0,0"
+              End="158.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="158.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

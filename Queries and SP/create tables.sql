@@ -238,22 +238,12 @@ bill_tran_uno int,
 prebill_num int, --FOREIGN KEY REFERENCES prebill_detail(prebill_num),
 matter_number int, --FOREIGN KEY REFERENCES matter_detail(matter_number),
 billgrp_code char(10), --FOREIGN KEY REFERENCES bill_group_detail(bill_group_code), 
-base_hrs money null,
-tobill_hrs money null,
 bill_date datetime null,
 bill_date_key int null,
 fees_billed_amt decimal(25,10) null,
 hard_billed_amt decimal(25,10) null,
 soft_billed_amt decimal(25,10) null,
-write_off_fees_amt decimal(25,10) null,
-write_off_hard_amt decimal(25,10) null,
-write_off_soft_amt decimal(25,10) null,
-reciept_fees_amt decimal(25,10) null,
-reciept_hard_amt decimal(25,10) null,
-reciept_soft_amt decimal(25,10) null,
-discount_level float null,
-base_amt decimal(25,10) null,
-std_amt decimal(25,10) null)
+discount_level float null)
 
 IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_FeesSummary_bill_tran_uno') 
@@ -511,11 +501,11 @@ GO
 --drop table aged_ar
 create table aged_ar (
 fees_summary_id int, --FOREIGN KEY REFERENCES fees_summary(fees_summary_id),
-aged_fees_billed_30 int null,
-aged_fees_billed_60 int null,
-aged_fees_billed_180 int null, 
-aged_fees_billed_360 int null,  
-aged_fees_billed_720 int null)
+aged_fees_billed_30 decimal(25,10) null,
+aged_fees_billed_60 decimal(25,10) null,
+aged_fees_billed_180 decimal(25,10) null, 
+aged_fees_billed_360 decimal(25,10) null,  
+aged_fees_billed_720 decimal(25,10) null)
 
 IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_AgedAR_fees_summary_id') 
@@ -583,27 +573,3 @@ inactive_ratesets_to_matter int)
 --	--ON Purchasing.ProductVendor (BusinessEntityID); 
 --GO
 
-select matter_number, count(*)
-from matter_detail
-group by matter_number 
-having count(*) >1
-
-
-truncate table matter_config_errors
-
-
-select e.matter_number
-from matter_config_errors e
-full join matter_detail m on m.matter_number = e.matter_number
-where m.matter_number is null
-
-select * from matter_detail where matter_number = 401555
-
-select * from matter_config_errors where matter_number = 401555
-
-select * from client_detail where client_code = '133312'
-
-select *
-from matter_detail m
-join client_detail c on c.client_code = m.client_code
-where c.client_code = '133312'
