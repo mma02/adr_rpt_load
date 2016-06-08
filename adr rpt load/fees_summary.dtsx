@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fees_summary"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{DA883AE3-3EC5-4D15-8E68-62BC67C347F1}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{5194BB0B-14BB-44E2-A882-AAFBC2DE78AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -827,6 +827,12 @@
                       cachedName="bill_date_key"
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
+                    <inputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[invoice_number]"
+                      cachedDataType="i4"
+                      cachedName="invoice_number"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -886,6 +892,10 @@
                       refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       dataType="i4"
                       name="bill_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      dataType="i4"
+                      name="invoice_number" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1091,6 +1101,15 @@
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
                       name="bill_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      name="invoice_number"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1150,6 +1169,10 @@
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
                       dataType="i4"
                       name="bill_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      dataType="i4"
+                      name="invoice_number" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1172,6 +1195,11 @@
                       dataType="i4"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      dataType="i4"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      name="invoice_number" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
                       dataType="i4"
@@ -2871,6 +2899,12 @@
                       cachedName="bill_date_key"
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
+                    <inputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[invoice_number]"
+                      cachedDataType="i4"
+                      cachedName="invoice_number"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2930,6 +2964,10 @@
                       refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       dataType="i4"
                       name="bill_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      dataType="i4"
+                      name="invoice_number" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2989,6 +3027,7 @@ WITH RESULT SETS
   (
 billgrp_uno int,
 bill_tran_uno int,
+invoice_number int,
 prebill_num int,
 matter_number int,
 billgrp_code char(10) null, 
@@ -3142,6 +3181,15 @@ discount_level float null
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]"
                       name="bill_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      name="invoice_number"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3197,6 +3245,10 @@ discount_level float null
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_date_key]"
                       dataType="i4"
                       name="bill_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      dataType="i4"
+                      name="invoice_number" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3214,6 +3266,11 @@ discount_level float null
                       dataType="i4"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       name="bill_tran_uno" />
+                    <outputColumn
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      dataType="i4"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      name="invoice_number" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
                       dataType="i4"
@@ -4430,7 +4487,7 @@ discount_level float null
     design-time-name="Package\load adr_rpt fees_summary">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\load adr_rpt fees_summary\OLE DB Destination"
@@ -4458,9 +4515,7 @@ discount_level float null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4557,7 +4612,7 @@ discount_level float null
     design-time-name="Package\Load staging fees_summary">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\Load staging fees_summary\OLE DB Destination"
@@ -4585,9 +4640,7 @@ discount_level float null
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
