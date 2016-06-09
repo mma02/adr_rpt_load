@@ -15,7 +15,7 @@ ALTER procedure [dbo].[BI_load_aged_ar] @runDate datetime
 as
 
 
-select fees_summary_id
+select fees_summary_id, matter_number
 , aged_fees_billed_30 = case when datediff(dd,@runDate, bill_date) <= 30 then fees_billed_amt - isnull(reciept_fees_amt, 0)  else 0 end 
 , aged_fees_billed_60 = case when datediff(dd,@runDate, bill_date) between 31 and 60 then fees_billed_amt - isnull(reciept_fees_amt, 0) else 0 end 
 , aged_fees_billed_180 = case when datediff(dd,@runDate, bill_date) between 61 and 180 then fees_billed_amt - isnull(reciept_fees_amt, 0) else 0 end 

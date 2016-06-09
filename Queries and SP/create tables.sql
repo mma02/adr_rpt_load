@@ -505,6 +505,7 @@ GO
 --drop table aged_ar
 create table aged_ar (
 fees_summary_id int, --FOREIGN KEY REFERENCES fees_summary(fees_summary_id),
+matter_number int,
 aged_fees_billed_30 decimal(25,10) null,
 aged_fees_billed_60 decimal(25,10) null,
 aged_fees_billed_180 decimal(25,10) null, 
@@ -519,6 +520,16 @@ CREATE NONCLUSTERED INDEX IX_AgedAR_fees_summary_id
     on aged_ar (fees_summary_id)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
+
+IF EXISTS (SELECT name FROM sys.indexes
+            WHERE name = N'IX_AgedAR_matter_number') 
+    DROP INDEX IX_AgedAR_matter_number ON aged_ar; 
+GO
+CREATE NONCLUSTERED INDEX IX_AgedAR_matter_number 
+    on aged_ar (matter_number)
+	--ON Purchasing.ProductVendor (BusinessEntityID); 
+GO
+
 
 --drop table disbursment_detail
 create table disbursment_detail (
