@@ -235,7 +235,7 @@ create table fees_summary (
 fees_summary_id int identity(1,1) PRIMARY KEY,
 bill_grp_uno int,
 bill_tran_uno int,
-invoice_number int,
+bill_number int,
 prebill_num int, --FOREIGN KEY REFERENCES prebill_detail(prebill_num),
 matter_number int, --FOREIGN KEY REFERENCES matter_detail(matter_number),
 billgrp_code char(10), --FOREIGN KEY REFERENCES bill_group_detail(bill_group_code), 

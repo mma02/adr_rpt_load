@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fees_summary"
   DTS:PackageType="5"
-  DTS:VersionBuild="77"
-  DTS:VersionGUID="{5194BB0B-14BB-44E2-A882-AAFBC2DE78AD}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{8091780E-0DFF-443B-BD16-93C57C3B5B01}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -828,11 +828,11 @@
                       externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
                     <inputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[invoice_number]"
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_number]"
                       cachedDataType="i4"
-                      cachedName="invoice_number"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]" />
+                      cachedName="bill_number"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_number]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -893,9 +893,9 @@
                       dataType="i4"
                       name="bill_date_key" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      refId="Package\load adr_rpt fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_number]"
                       dataType="i4"
-                      name="invoice_number" />
+                      name="bill_number" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1102,13 +1102,13 @@
                       name="bill_date_key"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
-                      name="invoice_number"
+                      externalMetadataColumnId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_number]"
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]"
+                      name="bill_number"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1170,9 +1170,9 @@
                       dataType="i4"
                       name="bill_date_key" />
                     <externalMetadataColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_number]"
                       dataType="i4"
-                      name="invoice_number" />
+                      name="bill_number" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1196,10 +1196,10 @@
                       lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       name="bill_tran_uno" />
                     <outputColumn
-                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_number]"
                       dataType="i4"
-                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
-                      name="invoice_number" />
+                      lineageId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_number]"
+                      name="bill_number" />
                     <outputColumn
                       refId="Package\load adr_rpt fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
                       dataType="i4"
@@ -2900,11 +2900,11 @@
                       externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_date_key]"
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_date_key]" />
                     <inputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[invoice_number]"
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bill_number]"
                       cachedDataType="i4"
-                      cachedName="invoice_number"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]" />
+                      cachedName="bill_number"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_number]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2965,9 +2965,9 @@
                       dataType="i4"
                       name="bill_date_key" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[invoice_number]"
+                      refId="Package\Load staging fees_summary\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bill_number]"
                       dataType="i4"
-                      name="invoice_number" />
+                      name="bill_number" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3027,7 +3027,7 @@ WITH RESULT SETS
   (
 billgrp_uno int,
 bill_tran_uno int,
-invoice_number int,
+bill_number int,
 prebill_num int,
 matter_number int,
 billgrp_code char(10) null, 
@@ -3182,13 +3182,13 @@ discount_level float null
                       name="bill_date_key"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[invoice_number]"
-                      name="invoice_number"
+                      externalMetadataColumnId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_number]"
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].Columns[bill_number]"
+                      name="bill_number"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -3246,9 +3246,9 @@ discount_level float null
                       dataType="i4"
                       name="bill_date_key" />
                     <externalMetadataColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[invoice_number]"
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[bill_number]"
                       dataType="i4"
-                      name="invoice_number" />
+                      name="bill_number" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3267,10 +3267,10 @@ discount_level float null
                       lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_tran_uno]"
                       name="bill_tran_uno" />
                     <outputColumn
-                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
+                      refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_number]"
                       dataType="i4"
-                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[invoice_number]"
-                      name="invoice_number" />
+                      lineageId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bill_number]"
+                      name="bill_number" />
                     <outputColumn
                       refId="Package\Load staging fees_summary\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prebill_num]"
                       dataType="i4"
@@ -4133,6 +4133,14 @@ discount_level float null
           Id="Package\load adr_rpt fees_summary"
           TopLeft="52,338" />
         <NodeLayout
+          Size="183,42"
+          Id="Package\load aged ar (adr rpt)"
+          TopLeft="562,629" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\load aged ar (staging)"
+          TopLeft="58,628" />
+        <NodeLayout
           Size="229,42"
           Id="Package\Load apportioned_pct (staging)"
           TopLeft="44,486" />
@@ -4209,8 +4217,52 @@ discount_level float null
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="496,649.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,0"
+              Start="0,0"
+              End="58.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="157.5,528">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="153.5,599">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4340,32 +4392,6 @@ discount_level float null
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="185,42"
-          Id="Package\load aged ar (staging)"
-          TopLeft="58,628" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="153.5,599">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
           TopLeft="243,649">
@@ -4380,32 +4406,6 @@ discount_level float null
                   Capacity="5">
                   <mssgle:LineSegment
                     End="46.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="183,42"
-          Id="Package\load aged ar (adr rpt)"
-          TopLeft="562,629" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="496,649.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="66,0"
-              Start="0,0"
-              End="58.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="58.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4489,13 +4489,13 @@ discount_level float null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173,42"
-          Id="Package\load adr_rpt fees_summary\OLE DB Destination"
-          TopLeft="638,204" />
-        <NodeLayout
           Size="152,42"
           Id="Package\load adr_rpt fees_summary\OLE DB Source"
           TopLeft="216,202" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load adr_rpt fees_summary\OLE DB Destination"
+          TopLeft="638,204" />
         <EdgeLayout
           Id="Package\load adr_rpt fees_summary.Paths[OLE DB Source Output]"
           TopLeft="368,224">
@@ -4536,6 +4536,121 @@ discount_level float null
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\load adr_rpt fees_summary\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load aged ar (adr rpt)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged ar (adr rpt)\OLE DB Source"
+          TopLeft="172,206" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged ar (adr rpt)\OLE DB Destination"
+          TopLeft="490,209" />
+        <EdgeLayout
+          Id="Package\load aged ar (adr rpt).Paths[OLE DB Source Output]"
+          TopLeft="324,228.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166,0"
+              Start="0,0"
+              End="158.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="158.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (adr rpt)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (adr rpt)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\load aged ar (staging)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173,42"
+          Id="Package\load aged ar (staging)\OLE DB Destination"
+          TopLeft="419,104" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\load aged ar (staging)\OLE DB Source"
+          TopLeft="88,101" />
+        <EdgeLayout
+          Id="Package\load aged ar (staging).Paths[OLE DB Source Output]"
+          TopLeft="240,123.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179,0"
+              Start="0,0"
+              End="171.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="171.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load aged ar (staging)\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4614,13 +4729,13 @@ discount_level float null
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173,42"
-          Id="Package\Load staging fees_summary\OLE DB Destination"
-          TopLeft="673,187" />
-        <NodeLayout
           Size="152,42"
           Id="Package\Load staging fees_summary\OLE DB Source"
           TopLeft="96,189" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Load staging fees_summary\OLE DB Destination"
+          TopLeft="673,187" />
         <EdgeLayout
           Id="Package\Load staging fees_summary.Paths[OLE DB Source Output]"
           TopLeft="248,209">
@@ -4725,121 +4840,6 @@ discount_level float null
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\load aged ar (staging)">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="173,42"
-          Id="Package\load aged ar (staging)\OLE DB Destination"
-          TopLeft="419,104" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\load aged ar (staging)\OLE DB Source"
-          TopLeft="88,101" />
-        <EdgeLayout
-          Id="Package\load aged ar (staging).Paths[OLE DB Source Output]"
-          TopLeft="240,123.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="179,0"
-              Start="0,0"
-              End="171.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="171.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\load aged ar (staging)\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\load aged ar (adr rpt)">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\load aged ar (adr rpt)\OLE DB Source"
-          TopLeft="172,206" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\load aged ar (adr rpt)\OLE DB Destination"
-          TopLeft="490,209" />
-        <EdgeLayout
-          Id="Package\load aged ar (adr rpt).Paths[OLE DB Source Output]"
-          TopLeft="324,228.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="166,0"
-              Start="0,0"
-              End="158.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="158.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\load aged ar (adr rpt)\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\load aged ar (adr rpt)\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
