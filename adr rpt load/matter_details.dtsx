@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="matter_details"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{9C06DC5E-EE7D-4294-8FDA-F337665B030B}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{5C7DB9B6-8593-4CEF-B5C0-F00CAB89FA12}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -333,6 +333,30 @@
                       cachedName="close_date_key"
                       externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILL_CLIENT_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="_EBILL_CLIENT_ID"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_CLIENT_ID]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILLING_INVOICE_DESC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="_EBILLING_INVOICE_DESC"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]" />
+                    <inputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILL_PROVIDER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="_EBILL_PROVIDER"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_PROVIDER]"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -464,6 +488,24 @@
                       refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
                       dataType="i4"
                       name="close_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_CLIENT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_PROVIDER" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -806,6 +848,39 @@
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
                       name="close_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_CLIENT_ID]"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]"
+                      name="_EBILL_CLIENT_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      length="1000"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]"
+                      name="_EBILLING_INVOICE_DESC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_PROVIDER]"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]"
+                      name="_EBILL_PROVIDER"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -937,6 +1012,24 @@
                       refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
                       dataType="i4"
                       name="close_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_CLIENT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_PROVIDER" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1019,6 +1112,27 @@
                       length="50"
                       lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
                       name="external_ebilling_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_CLIENT_ID]"
+                      name="_EBILL_CLIENT_ID" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILLING_INVOICE_DESC]"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <outputColumn
+                      refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_PROVIDER]"
+                      name="_EBILL_PROVIDER" />
                     <outputColumn
                       refId="Package\load matter detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
                       dataType="dbTimeStamp"
@@ -1388,6 +1502,30 @@
                       cachedName="close_date_key"
                       externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILL_CLIENT_ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="_EBILL_CLIENT_ID"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_CLIENT_ID]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILLING_INVOICE_DESC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="_EBILLING_INVOICE_DESC"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]" />
+                    <inputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[_EBILL_PROVIDER]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="_EBILL_PROVIDER"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_PROVIDER]"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1519,6 +1657,24 @@
                       refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[close_date_key]"
                       dataType="i4"
                       name="close_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_CLIENT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_PROVIDER" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1587,6 +1743,9 @@ WITH RESULT SETS
 	billing_coordinator_name varchar(40) null,
 	billing_coordinator_code char(6) null,
 	external_ebilling_number varchar(50) null,
+_EBILL_CLIENT_ID varchar(50) null,
+_EBILLING_INVOICE_DESC varchar(1000) null,
+_EBILL_PROVIDER varchar(50) null,
 	open_date datetime null,
 open_date_key int,
 close_date datetime null,
@@ -1891,6 +2050,39 @@ close_date_key int,
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[close_date_key]"
                       name="close_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_CLIENT_ID]"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_CLIENT_ID]"
+                      name="_EBILL_CLIENT_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      length="1000"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILLING_INVOICE_DESC]"
+                      name="_EBILLING_INVOICE_DESC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_PROVIDER]"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[_EBILL_PROVIDER]"
+                      name="_EBILL_PROVIDER"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2022,6 +2214,24 @@ close_date_key int,
                       refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[close_date_key]"
                       dataType="i4"
                       name="close_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_CLIENT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_EBILL_PROVIDER" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2104,6 +2314,27 @@ close_date_key int,
                       length="50"
                       lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[external_ebilling_number]"
                       name="external_ebilling_number" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_CLIENT_ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_CLIENT_ID]"
+                      name="_EBILL_CLIENT_ID" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILLING_INVOICE_DESC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILLING_INVOICE_DESC]"
+                      name="_EBILLING_INVOICE_DESC" />
+                    <outputColumn
+                      refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_PROVIDER]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[_EBILL_PROVIDER]"
+                      name="_EBILL_PROVIDER" />
                     <outputColumn
                       refId="Package\load matter detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[open_date]"
                       dataType="dbTimeStamp"

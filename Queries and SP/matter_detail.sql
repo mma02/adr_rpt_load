@@ -80,7 +80,7 @@ where t1.matter_uno	not in (select matter_uno from #variable)
 
 
 select c.client_code, m.matter_number, m.matter_name, m.long_matt_name, ba.employee_name, ba.employee_code, ra.employee_name, ra.employee_code 
-, bc.employee_name, bc.employee_code, tm._ebill_internal_matter_no
+, bc.employee_name, bc.employee_code, tm._ebill_internal_matter_no, tm._EBILL_CLIENT_ID, tm._EBILLING_INVOICE_DESC, tm._EBILL_PROVIDER
 , m.open_date
 , CONVERT (char(8),m.open_date,112)
 , m.close_date
