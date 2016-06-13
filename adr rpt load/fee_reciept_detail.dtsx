@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fee_reciept_detail"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{65ACD748-080B-4A28-BCA9-D3E4DB4C53E2}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{B9560D86-2A81-4417-B65B-8F0BD72F03A2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -185,6 +185,18 @@
                       cachedName="reciept_type"
                       externalMetadataColumnId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_type]"
                       lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_type]" />
+                    <inputColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_tran_uno]"
+                      cachedDataType="i4"
+                      cachedName="reciept_tran_uno"
+                      externalMetadataColumnId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_tran_uno]"
+                      lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_tran_uno]" />
+                    <inputColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_date_key]"
+                      cachedDataType="i4"
+                      cachedName="reciept_date_key"
+                      externalMetadataColumnId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_date_key]"
+                      lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -232,6 +244,10 @@
                       refId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_tran_uno]"
                       dataType="i4"
                       name="reciept_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_date_key]"
+                      dataType="i4"
+                      name="reciept_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -410,6 +426,15 @@
                       lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_tran_uno]"
                       name="reciept_tran_uno"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_date_key]"
+                      lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]"
+                      name="reciept_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -457,6 +482,10 @@
                       refId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_tran_uno]"
                       dataType="i4"
                       name="reciept_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_date_key]"
+                      dataType="i4"
+                      name="reciept_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -489,6 +518,11 @@
                       dataType="dbTimeStamp"
                       lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date]"
                       name="reciept_date" />
+                    <outputColumn
+                      refId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date_key]"
+                      name="reciept_date_key" />
                     <outputColumn
                       refId="Package\load reciept detail (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
                       dataType="numeric"
@@ -681,6 +715,18 @@
                       cachedName="reciept_type"
                       externalMetadataColumnId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_type]"
                       lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_type]" />
+                    <inputColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_tran_number]"
+                      cachedDataType="i4"
+                      cachedName="reciept_tran_number"
+                      externalMetadataColumnId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_tran_uno]"
+                      lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_tran_number]" />
+                    <inputColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reciept_date_key]"
+                      cachedDataType="i4"
+                      cachedName="reciept_date_key"
+                      externalMetadataColumnId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_date_key]"
+                      lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -728,6 +774,10 @@
                       refId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_tran_uno]"
                       dataType="i4"
                       name="reciept_tran_uno" />
+                    <externalMetadataColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reciept_date_key]"
+                      dataType="i4"
+                      name="reciept_date_key" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -789,6 +839,7 @@ bill_tran_uno int,
 matter_number int,
 reciept_tran_number int,
 reciept_date datetime null,
+reciept_date_key int,
 reciept_fees_amt decimal(25,10) null,
 reciept_hard_amt decimal(25,10) null,
 reciept_soft_amt decimal(25,10) null,
@@ -910,6 +961,15 @@ reciept_type char(3)
                       lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_type]"
                       name="reciept_type"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_date_key]"
+                      lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[reciept_date_key]"
+                      name="reciept_date_key"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -953,6 +1013,10 @@ reciept_type char(3)
                       dataType="str"
                       length="3"
                       name="reciept_type" />
+                    <externalMetadataColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[reciept_date_key]"
+                      dataType="i4"
+                      name="reciept_date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -980,6 +1044,11 @@ reciept_type char(3)
                       dataType="dbTimeStamp"
                       lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date]"
                       name="reciept_date" />
+                    <outputColumn
+                      refId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date_key]"
+                      dataType="i4"
+                      lineageId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_date_key]"
+                      name="reciept_date_key" />
                     <outputColumn
                       refId="Package\load reciept detail (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[reciept_fees_amt]"
                       dataType="numeric"
@@ -1147,7 +1216,7 @@ reciept_type char(3)
     design-time-name="Package\load reciept detail (adr rpt)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\load reciept detail (adr rpt)\OLE DB Destination"
@@ -1175,9 +1244,7 @@ reciept_type char(3)
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1213,7 +1280,7 @@ reciept_type char(3)
     design-time-name="Package\load reciept detail (staging)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="173,42"
           Id="Package\load reciept detail (staging)\OLE DB Destination"
@@ -1241,9 +1308,7 @@ reciept_type char(3)
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

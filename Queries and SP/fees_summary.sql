@@ -52,6 +52,7 @@ left join _tbm_climat_pd md on m.matter_uno = md.matter_uno
 left join _tbm_climat_pd cd on c.client_uno = cd.client_uno
 where b.tran_date >= '1/1/2015' --and '2/2/2015'
 and b.bill_tran_uno not in (select bill_tran_uno from @bill_trans_to_exclude)
+and tran_type in ('BL', 'BLX')
 group by b.bill_tran_uno, p.bill_num, m.matter_number, isnull(md.pd_pcnt, cd.pd_pcnt), p.prebill_num, bg.billgrp_code, bg.billgrp_uno
 
 

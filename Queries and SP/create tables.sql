@@ -304,11 +304,11 @@ CREATE NONCLUSTERED INDEX IX_FeesSummary_bill_grp_uno
 GO
 
 IF EXISTS (SELECT name FROM sys.indexes
-            WHERE name = N'IX_FeesSummary_bill_date') 
-    DROP INDEX IX_FeesSummary_bill_date ON fees_summary; 
+            WHERE name = N'IX_FeesSummary_bill_date_key') 
+    DROP INDEX IX_FeesSummary_bill_date_key ON fees_summary; 
 GO
-CREATE CLUSTERED INDEX IX_FeesSummary_bill_date 
-    on fees_summary (bill_date)
+CREATE CLUSTERED INDEX IX_FeesSummary_bill_date_key
+    on fees_summary (bill_date_key)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
 
@@ -398,17 +398,18 @@ bill_tran_uno int,
 matter_number int, --FOREIGN KEY REFERENCES matter_detail(matter_number),
 reciept_tran_uno int,
 reciept_date datetime null,
+reciept_date_key int,
 reciept_fees_amt decimal(25,10) null,
 reciept_hard_amt decimal(25,10) null,
 reciept_soft_amt decimal(25,10) null,
 reciept_type char(3))
 
 IF EXISTS (SELECT name FROM sys.indexes
-            WHERE name = N'IX_RecieptDetail_reciept_date') 
-    DROP INDEX IX_RecieptDetail_reciept_date ON reciept_detail; 
+            WHERE name = N'IX_RecieptDetail_reciept_date_key') 
+    DROP INDEX IX_RecieptDetail_reciept_date_key ON reciept_detail; 
 GO
-CREATE CLUSTERED INDEX IX_RecieptDetail_reciept_date 
-    on reciept_detail (reciept_date)
+CREATE CLUSTERED INDEX IX_RecieptDetail_reciept_date_key 
+    on reciept_detail (reciept_date_key)
 	--ON Purchasing.ProductVendor (BusinessEntityID); 
 GO
 
@@ -588,3 +589,10 @@ inactive_ratesets_to_matter int)
 --	--ON Purchasing.ProductVendor (BusinessEntityID); 
 --GO
 
+
+--need to figure out whats wrong with these matters
+delete from matter_detail where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
+delete from fees_summary where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
+delete from reciept_detail where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
+delete from fee_write_off_detail where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
+delete from aged_ar where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
