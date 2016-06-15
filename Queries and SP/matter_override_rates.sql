@@ -10,7 +10,7 @@ GO
 
 --exec [BI_client_details]
 
-create procedure [dbo].[BI_load_matter_override_rates]
+alter procedure [dbo].[BI_load_matter_override_rates]
 as
 
 
@@ -20,10 +20,11 @@ select m.matter_number,  p.employee_name, p.employee_code, null, null, rs.rate_s
 , f.eff_date, CONVERT (char(8),f.eff_date,112)
 , f.end_date, CONVERT (char(8),f.end_date,112)
 , f.rate
+, rs.inactive
 --select count(*)
 FROM TBM_RATE_FEE f
 JOIN TBL_MATT_RATESET TMR1 ON f.RATE_SET_UNO=TMR1.RATESET_UNO AND GETDATE() BETWEEN tmr1.START_DATE AND tmr1.END_DATE
-join TBL_RATE_SET rs on TMR1.rateset_uno= rs.rate_set_uno and rs.inactive='N'
+join TBL_RATE_SET rs on TMR1.rateset_uno= rs.rate_set_uno
 JOIN dbo.HBM_MATTER m ON tmr1.MATTER_UNO=m.MATTER_UNO 
 join hbm_persnl p on f.empl_uno=p.empl_uno
 
@@ -36,9 +37,10 @@ select m.matter_number,  null, null,r.rank_desc, f.rank_code, rs.rate_set_code, 
 , f.eff_date, CONVERT (char(8),f.eff_date,112)
 , f.end_date, CONVERT (char(8),f.end_date,112)
 , f.rate
+, rs.inactive
 FROM TBM_RATE_FEE f
 JOIN TBL_MATT_RATESET TMR1 ON f.RATE_SET_UNO=TMR1.RATESET_UNO AND GETDATE() BETWEEN tmr1.START_DATE AND tmr1.END_DATE
-join TBL_RATE_SET rs on TMR1.rateset_uno= rs.rate_set_uno and rs.inactive='N'
+join TBL_RATE_SET rs on TMR1.rateset_uno= rs.rate_set_uno 
 JOIN dbo.HBM_MATTER m ON tmr1.MATTER_UNO=m.MATTER_UNO 
 join TBL_RANK r on f.rank_code = r.rank_code
 
@@ -48,6 +50,7 @@ select m.matter_number,  p.employee_name, p.employee_code, null, null, null, nul
 , f.eff_date, CONVERT (char(8),f.eff_date,112)
 , f.end_date, CONVERT (char(8),f.end_date,112)
 , f.rate
+, null
 --select count(*)
 from TBM_RATE_FEE f
 JOIN dbo.HBM_MATTER m ON f.MATTER_UNO=m.MATTER_UNO
@@ -60,6 +63,7 @@ select m.matter_number,  null, null,r.rank_desc, f.rank_code, null, null,  null,
 , f.eff_date, CONVERT (char(8),f.eff_date,112)
 , f.end_date, CONVERT (char(8),f.end_date,112)
 , f.rate
+, null
 --select count(*)
 from TBM_RATE_FEE f
 JOIN dbo.HBM_MATTER m ON f.MATTER_UNO=m.MATTER_UNO

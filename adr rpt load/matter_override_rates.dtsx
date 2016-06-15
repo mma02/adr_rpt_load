@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="matter_override_rates"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{3C41A5A3-396B-4474-BD7F-60FC04EC6C45}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{1A8A8BC7-F57A-4168-9C64-C63241F52DFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -253,6 +253,14 @@
                       cachedName="override_end_date_key"
                       externalMetadataColumnId="Package\load matter override rates (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[override_end_date_key]"
                       lineageId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[override_end_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter override rates (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rateset_inactive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="rateset_inactive"
+                      externalMetadataColumnId="Package\load matter override rates (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_inactive]"
+                      lineageId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -336,6 +344,12 @@
                       refId="Package\load matter override rates (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[override_end_date_key]"
                       dataType="i4"
                       name="override_end_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter override rates (adr rpt)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="rateset_inactive" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -590,6 +604,17 @@
                       lineageId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[override_end_date_key]"
                       name="override_end_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_inactive]"
+                      length="1"
+                      lineageId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]"
+                      name="rateset_inactive"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -673,6 +698,12 @@
                       refId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[override_end_date_key]"
                       dataType="i4"
                       name="override_end_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="rateset_inactive" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -777,6 +808,13 @@
                       name="override_rate"
                       precision="25"
                       scale="10" />
+                    <outputColumn
+                      refId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_inactive]"
+                      name="rateset_inactive" />
                     <outputColumn
                       refId="Package\load matter override rates (adr rpt)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -999,6 +1037,14 @@
                       cachedName="override_end_date_key"
                       externalMetadataColumnId="Package\load matter override rates (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[override_end_date_key]"
                       lineageId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[override_end_date_key]" />
+                    <inputColumn
+                      refId="Package\load matter override rates (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rateset_inactive]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="rateset_inactive"
+                      externalMetadataColumnId="Package\load matter override rates (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_inactive]"
+                      lineageId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1082,6 +1128,12 @@
                       refId="Package\load matter override rates (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[override_end_date_key]"
                       dataType="i4"
                       name="override_end_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter override rates (staging)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="rateset_inactive" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1154,7 +1206,8 @@ override_start_date datetime null,
 override_start_date_key int null,
 override_end_date datetime null,
 override_end_date_key int null,
-	override_rate decimal(25,10) null
+	override_rate decimal(25,10) null,
+rateset_inactive varchar(1) null
   )
 );</property>
                 <property
@@ -1348,6 +1401,17 @@ override_end_date_key int null,
                       lineageId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[override_end_date_key]"
                       name="override_end_date_key"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_inactive]"
+                      length="1"
+                      lineageId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].Columns[rateset_inactive]"
+                      name="rateset_inactive"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1427,6 +1491,12 @@ override_end_date_key int null,
                       refId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[override_end_date_key]"
                       dataType="i4"
                       name="override_end_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="rateset_inactive" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1526,6 +1596,13 @@ override_end_date_key int null,
                       name="override_rate"
                       precision="25"
                       scale="10" />
+                    <outputColumn
+                      refId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_inactive]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rateset_inactive]"
+                      name="rateset_inactive" />
                     <outputColumn
                       refId="Package\load matter override rates (staging)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"

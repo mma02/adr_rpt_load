@@ -108,7 +108,8 @@ override_start_date datetime null,
 override_start_date_key int null,
 override_end_date datetime null,
 override_end_date_key int null,
-override_rate decimal(25,10) null)
+override_rate decimal(25,10) null,
+rateset_inactive varchar(1) null)
 
 IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_MatterOverrideRates_matter_number') 
@@ -589,6 +590,13 @@ inactive_ratesets_to_matter int)
 --	--ON Purchasing.ProductVendor (BusinessEntityID); 
 --GO
 
+--drop table client_config_errors
+create table client_config_errors (
+client_code char(10),
+--rateset_client_code_mismatch int,
+_2varFees int,
+_2varFeesDiffRates int,
+var_std_mismatch int)
 
 --need to figure out whats wrong with these matters
 delete from matter_detail where matter_number in (401640, 401641, 401642, 401643, 401645, 401646, 401650)
